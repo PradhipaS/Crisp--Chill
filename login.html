@@ -1,81 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <style>
-        body {
-            text-align: center;
-            background-image: url("images/blur.png");
-            background-size: cover;
-            background-repeat: no-repeat;
-            
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
         }
-     .login-container {
-    position: absolute;
-    background-color: #fbf5f5; /* Soft background */
-  justify-content: center;
-  align-items: center;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 300px;
-    width: 400px;
-    border: 0.09cm solid #333;
-    border-radius: 10px;
-    padding: 50px;
-}
 
-.login-header {
-    margin-bottom: 25px;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    
-}
-.login-container label{
-    font-size: 18px;
-    color: #333;
-}
-.login-container input{
-    width: 50%;
-    padding: 10px;
-    margin: 5px 0;
-    border: px solid #171212;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-    .login-container button{
-        width: 20%;
-        padding: 1%;
-        background-color: rgb(250, 195, 210);
-        text-align: center;
-        color: rgb(17, 0, 0);
-        text-decoration: solid #333;
-         border: 2px solid #333; 
-         border-radius: 4px;
-          padding: 10px 20px; 
-          cursor: pointer;
-    }  
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ffd6e9, #d4e6ff);
+            background-size: cover;
+            color: #333;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-container h1 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #003a70;
+        }
+
+        .login-container label {
+            display: block;
+            font-size: 16px;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .login-container input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background: #ff4f9d;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-container button:hover {
+            background-color: #e6006f;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+            .login-container h1 {
+                font-size: 24px;
+            }
+            .login-container input, 
+            .login-container button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
     </style>
 </head>
 <body>
-   <div class="login-container">
-    <div class="login-header">
-        <h1>Login</h1><br>
-        <form>
-            <label for="Username">Username</label>
-            <input type="text" id ="username" name="Username" required>
-            <br><br>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" required>
-            </label>
-            <br><br>
-            <button  type="button" onclick="login()"><b>Login</b></button>
-        </form>
-       
 
-   </div>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Enter Username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter Password" required>
+
+            <button type="button" onclick="login()">Login</button>
+        </form>
+    </div>
+
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if(username === "admin" && password === "1234") {
+                alert("Login Successful!");
+                // Redirect to homepage or gallery
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid Username or Password!");
+            }
+        }
+    </script>
+
 </body>
 </html>
