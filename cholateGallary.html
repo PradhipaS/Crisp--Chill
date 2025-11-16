@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Gallery</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f2f2;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            padding: 20px;
+            color: #5a2d0c;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            margin: 10px 0 5px 0;
+            color: #5a2d0c;
+        }
+
+        .card-content p {
+            margin: 0;
+            color: #777;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chocolate Gallery</h1>
+
+    <div class="gallery">
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=Dark+Chocolate" alt="Dark Chocolate">
+            <div class="card-content">
+                <h3>Dark Chocolate</h3>
+                <p>Rich and bitter, high cocoa content.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=Milk+Chocolate" alt="Milk Chocolate">
+            <div class="card-content">
+                <h3>Milk Chocolate</h3>
+                <p>Sweet and creamy chocolate with milk solids.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=White+Chocolate" alt="White Chocolate">
+            <div class="card-content">
+                <h3>White Chocolate</h3>
+                <p>Sweet, creamy, made from cocoa butter.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=Ruby+Chocolate" alt="Ruby Chocolate">
+            <div class="card-content">
+                <h3>Ruby Chocolate</h3>
+                <p>Fruity, slightly tangy, pink chocolate.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=Truffles" alt="Truffles">
+            <div class="card-content">
+                <h3>Chocolate Truffles</h3>
+                <p>Soft, round chocolates with creamy centers.</p>
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://via.placeholder.com/200x200.png?text=Nut+Chocolate" alt="Nut Chocolate">
+            <div class="card-content">
+                <h3>Nut Chocolates</h3>
+                <p>Crunchy and delicious with almonds or hazelnuts.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

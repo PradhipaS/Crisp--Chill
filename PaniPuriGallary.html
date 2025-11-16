@@ -1,2 +1,201 @@
 <!DOCTYPE html>
-<
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puri & Snacks Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            background: #fffaf0;
+            text-align: center;
+        }
+        h1 {
+            margin: 20px 0;
+            color: #d35400;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .card {
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-content h2 {
+            margin: 0;
+            color: #e67e22;
+        }
+        .card-content p {
+            font-size: 14px;
+            color: #555;
+            margin: 10px 0;
+        }
+        .price {
+            font-weight: bold;
+            color: #c0392b;
+        }
+        @media(max-width: 600px){
+            .card img {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Puri & Delights</h1>
+    <div class="gallery">
+
+        <!-- Snacks and Puris -->
+        <div class="card">
+            <img src="Images/Cheese_Bhel.jpeg" alt="Cheese Bhel">
+            <div class="card-content">
+                <h2>Cheese Bhel</h2>
+                <p>Crunchy bhel mixed with cheese and tangy chutneys for a cheesy twist.</p>
+                <p class="price">₹90</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Cheese_Dabeli.jpeg" alt="Cheese Dabeli">
+            <div class="card-content">
+                <h2>Cheese Dabeli</h2>
+                <p>Spicy potato filling in a bun with tangy chutney and melted cheese.</p>
+                <p class="price">₹85</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Dahi_Puri.jpg" alt="Dahi Puri">
+            <div class="card-content">
+                <h2>Dahi Puri</h2>
+                <p>Crispy puris filled with potato, chutneys, and creamy yogurt topping.</p>
+                <p class="price">₹80</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Kacchi_Dabeli.jpeg" alt="Kacchi Dabeli">
+            <div class="card-content">
+                <h2>Kacchi Dabeli</h2>
+                <p>Traditional spicy potato filling in soft buns with peanut crunch.</p>
+                <p class="price">₹75</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Pani.webp" alt="Pani Puri">
+            <div class="card-content">
+                <h2>Pani Puri</h2>
+                <p>Crispy hollow puris with spicy tangy water and potato stuffing.</p>
+                <p class="price">₹60</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Ragda_Patties.jpeg" alt="Ragda Patties">
+            <div class="card-content">
+                <h2>Ragda Patties</h2>
+                <p>Spicy white peas curry served with potato patties and chutneys.</p>
+                <p class="price">₹90</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Ragda_Puri.jpeg" alt="Ragda Puri">
+            <div class="card-content">
+                <h2>Ragda Puri</h2>
+                <p>Soft puris served with white peas curry, onions, and tangy chutney.</p>
+                <p class="price">₹90</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/Samosa_Chat.jpeg" alt="Samosa Chat">
+            <div class="card-content">
+                <h2>Samosa Chat</h2>
+                <p>Crispy samosas topped with chickpeas, yogurt, and tangy chutneys.</p>
+                <p class="price">₹70</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/dry_bhel.jpeg" alt="Dry Bhel">
+            <div class="card-content">
+                <h2>Dry Bhel</h2>
+                <p>Light and crunchy snack mix with chutneys, onions, and spices.</p>
+                <p class="price">₹60</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/masala.jpeg" alt="Masala Puri">
+            <div class="card-content">
+                <h2>Masala Puri</h2>
+                <p>Puri topped with spicy masala, onions, chutney, and sev.</p>
+                <p class="price">₹80</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/pani_1.jpg" alt="Pani Puri Special">
+            <div class="card-content">
+                <h2>Pani Puri Special</h2>
+                <p>Extra tangy and spicy water served with crispy puris and fillings.</p>
+                <p class="price">₹70</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/plain.jpg" alt="Plain Puri">
+            <div class="card-content">
+                <h2>Plain Puri</h2>
+                <p>Simple crisp puris, perfect to enjoy with your favorite curry or chutney.</p>
+                <p class="price">₹50</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/sev.jpg" alt="Sev Puri">
+            <div class="card-content">
+                <h2>Sev Puri</h2>
+                <p>Flat puris topped with chopped onions, tomatoes, chutneys, and crunchy sev.</p>
+                <p class="price">₹70</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="Images/stuff.JPG" alt="Stuffed Puri">
+            <div class="card-content">
+                <h2>Stuffed Puri</h2>
+                <p>Puri filled with spiced potato mix, chutneys, and special toppings.</p>
+                <p class="price">₹85</p>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
