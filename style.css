@@ -4,9 +4,10 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom right, #b94981, #87b1d3);
+     overflow-x: hidden;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    
 }
 * {
     box-sizing: border-box;
@@ -42,32 +43,31 @@ nav a:hover {
 
 /* Cards Grid */
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    max-width: 1300px;        /* Controls total width → cards become bigger */
-    margin: auto;             /* Center the whole grid */
-    gap: 30px;                /* Space between cards */
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
     width: 100%;
+    padding: 0 10px;
 }
 
-/* Card box */
+
 .card {
-    background-color: #f4c8d5; 
-    padding: 20px;
-    border-radius: 20px;
-    text-align: center;
-    align-items: center;
-    box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    width: 200px;
+    background: rgb(245, 205, 205);
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    cursor: pointer;
+    color: black;
 }
 
-/* Bigger images + no overflow */
 .card img {
-    width: 100%;   
-    height: 230px;           /* Slightly taller image */
-    object-fit: cover;       /* Crop nicely */
-    border-radius: 15px;
-    display: block;
+    width: 100%;
+    height: 140px;
+    border-radius: 10px;
+    object-fit: cover;
 }
 
 .card:hover {
