@@ -3,7 +3,7 @@ body {
     margin: 0;
     text-align: center;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom right, #ffb3d9, #a8d8ff);
+    background: linear-gradient(to bottom right, #b94981, #87b1d3);
 }
 
 /* Header Background Image */
@@ -11,14 +11,14 @@ body {
     background: url("Images/blur.png") no-repeat center center/cover;
     width: 100%;
     padding: 80px 20px;
-    color: rgb(153, 7, 7);
+    color: rgb(255, 255, 255);
     text-shadow: 2px 2px 5px black;
     border-bottom: 3px solid rgba(255, 255, 255, 0.4);
 }
 
 /* Navigation */
 nav {
-    background: rgba(188, 110, 110, 0.7);
+    background: rgba(230, 162, 162, 0.7);
     padding: 15px;
     font-size: 18px;
     font-weight: bold;
@@ -27,11 +27,11 @@ nav {
 nav a {
     margin: 0 18px;
     text-decoration: none;
-    color: rgb(13, 2, 53);
+    color: rgb(36, 21, 88);
 }
 
 nav a:hover {
-    color: #ef1297;
+    color: #ed9ccd;
 }
 
 /* Cards Grid */
@@ -45,7 +45,7 @@ nav a:hover {
 
 .card {
     width: 200px;
-    background: rgb(230, 172, 172);
+    background: rgb(245, 205, 205);
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
@@ -68,7 +68,7 @@ nav a:hover {
 footer {
     margin-top: 50px;
     padding: 20px;
-    background: rgba(237, 147, 147, 0.6);
+    background: rgba(231, 170, 170, 0.6);
 }
 
 /* Responsive - Tablets */
