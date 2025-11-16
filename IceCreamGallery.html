@@ -13,6 +13,7 @@
             background: linear-gradient(to bottom right, #ffd6e9, #d4e6ff);
             font-family: "Merriweather", serif;
             margin: 0;
+            color:black;
         }
 
         h1 {
@@ -32,7 +33,7 @@
         .image {
             width: 260px;
             background: linear-gradient(145deg, #ffe2f1, #d4e8ff);
-            height: 358px;
+            height: 380px;
             border-radius: 15px;
             border: 2px solid rgba(255, 255, 255, 0.6);
             padding: 10px;
@@ -127,117 +128,131 @@
 
 <div class="image-container">
 
-    <!-- 16 IceCream Cards -->
+    <!-- 1. Strawberry -->
     <div class="image">
         <img src="Images/strawberry.jpg">
         <h4><b>Strawberry Icecream</b></h4>
         <p class="price">₹80</p>
-        <button class="btn" onclick="addToCart('Strawberry Icecream', 80)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Strawberry Icecream', 80)">Order Now</button>
     </div>
 
+    <!-- 2. Chocochip -->
     <div class="image">
         <img src="Images/chocochip.jpeg">
         <h4><b>Chocochip Icecream</b></h4>
         <p class="price">₹90</p>
-        <button class="btn" onclick="addToCart('Chocochip Icecream', 90)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Chocochip Icecream', 90)">Order Now</button>
     </div>
 
+    <!-- 3. Chocolate -->
     <div class="image">
         <img src="Images/chocolateice.jpeg">
         <h4><b>Chocolate Icecream</b></h4>
         <p class="price">₹85</p>
-        <button class="btn" onclick="addToCart('Chocolate Icecream', 85)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Chocolate Icecream', 85)">Order Now</button>
     </div>
 
+    <!-- 4. Vanilla -->
     <div class="image">
         <img src="Images/vanilla.jpg">
         <h4><b>Vanilla Icecream</b></h4>
         <p class="price">₹70</p>
-        <button class="btn" onclick="addToCart('Vanilla Icecream', 70)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Vanilla Icecream', 70)">Order Now</button>
     </div>
 
+    <!-- 5. Mint Chocochip -->
     <div class="image">
         <img src="Images/mint chocchip.jpeg">
         <h4><b>Mint Chocochip Icecream</b></h4>
         <p class="price">₹95</p>
-        <button class="btn" onclick="addToCart('Mint Chocochip Icecream', 95)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Mint Chocochip Icecream', 95)">Order Now</button>
     </div>
 
+    <!-- 6. Rocky Road -->
     <div class="image">
         <img src="Images/rockyroad.jpeg">
         <h4><b>Rocky Road Icecream</b></h4>
         <p class="price">₹100</p>
-        <button class="btn" onclick="addToCart('Rocky Road Icecream', 100)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Rocky Road Icecream', 100)">Order Now</button>
     </div>
 
+    <!-- 7. Cookies & Cream -->
     <div class="image">
         <img src="Images/cookies&cream.jpeg">
         <h4><b>Cookies & Cream Icecream</b></h4>
         <p class="price">₹110</p>
-        <button class="btn" onclick="addToCart('Cookies & Cream Icecream', 110)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Cookies & Cream Icecream', 110)">Order Now</button>
     </div>
 
+    <!-- 8. Lemon -->
     <div class="image">
         <img src="Images/lemon.jpeg">
         <h4><b>Lemon Icecream</b></h4>
         <p class="price">₹75</p>
-        <button class="btn" onclick="addToCart('Lemon Icecream', 75)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Lemon Icecream', 75)">Order Now</button>
     </div>
 
+    <!-- 9. Banana -->
     <div class="image">
         <img src="Images/banana.jpeg">
         <h4><b>Banana Icecream</b></h4>
         <p class="price">₹85</p>
-        <button class="btn" onclick="addToCart('Banana Icecream', 85)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Banana Icecream', 85)">Order Now</button>
     </div>
 
+    <!-- 10. Blackberry -->
     <div class="image">
         <img src="Images/blackberry.jpeg">
         <h4><b>Blackberry Icecream</b></h4>
         <p class="price">₹120</p>
-        <button class="btn" onclick="addToCart('Blackberry Icecream', 120)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Blackberry Icecream', 120)">Order Now</button>
     </div>
 
+    <!-- 11. Blueberry -->
     <div class="image">
         <img src="Images/blueberry.jpeg">
         <h4><b>Blueberry Icecream</b></h4>
         <p class="price">₹130</p>
-        <button class="btn" onclick="addToCart('Blueberry Icecream', 130)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Blueberry Icecream', 130)">Order Now</button>
     </div>
 
+    <!-- 12. Peanut Butter -->
     <div class="image">
         <img src="Images/peanutbutter.jpeg">
         <h4><b>Peanut Butter Icecream</b></h4>
         <p class="price">₹140</p>
-        <button class="btn" onclick="addToCart('Peanut Butter Icecream', 140)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Peanut Butter Icecream', 140)">Order Now</button>
     </div>
 
+    <!-- 13. Caramel -->
     <div class="image">
         <img src="Images/caramel.jpeg">
         <h4><b>Caramel Icecream</b></h4>
         <p class="price">₹125</p>
-        <button class="btn" onclick="addToCart('Caramel Icecream', 125)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Caramel Icecream', 125)">Order Now</button>
     </div>
 
+    <!-- 14. Cherry -->
     <div class="image">
         <img src="Images/cherry.jpeg">
         <h4><b>Cherry Icecream</b></h4>
         <p class="price">₹110</p>
-        <button class="btn" onclick="addToCart('Cherry Icecream', 110)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Cherry Icecream', 110)">Order Now</button>
     </div>
 
+    <!-- 15. Pistachio -->
     <div class="image">
         <img src="Images/pistachio.webp">
         <h4><b>Pistachio Icecream</b></h4>
         <p class="price">₹150</p>
-        <button class="btn" onclick="addToCart('Pistachio Icecream', 150)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Pistachio Icecream', 150)">Order Now</button>
     </div>
 
-    <div class="image">
+    <!-- 16. Other Icecream -->
+    <div class="image" onclick="window.location.href='buildYourIcecream.html'">
         <img src="Images/others.png">
         <h4><b>Other Icecream</b></h4>
         <p class="price">₹100</p>
-        <button class="btn" onclick="addToCart('Other Icecream', 100)">Add to Cart</button>
     </div>
 
 </div>
@@ -250,8 +265,14 @@
 
 <script>
     let cart = [];
+    let isSignedIn = false; // Change to true if the user is signed in
 
-    function addToCart(name, price) {
+    function orderNow(name, price) {
+        if(!isSignedIn) {
+            alert("Please sign in to place your order.");
+            window.location.href = "signin.html"; // Redirect to sign-in page
+            return;
+        }
         const existing = cart.find(item => item.name === name);
         if(existing) {
             alert(name + " is already in cart!");
@@ -259,6 +280,7 @@
         }
         cart.push({name, price});
         renderCart();
+        alert(name + " added to your order!");
     }
 
     function removeFromCart(name) {
