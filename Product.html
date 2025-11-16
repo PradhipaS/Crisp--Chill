@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Details</title>
+</head>
+
+<body style="text-align:center; font-family:sans-serif;">
+
+<h1 id="pname"></h1>
+<h2 id="pprice"></h2>
+
+<button style="padding:10px 20px; background:brown; color:white; border-radius:5px;">
+    Add to Cart
+</button>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    document.getElementById("pname").innerHTML = params.get("name");
+    document.getElementById("pprice").innerHTML = "Price: ₹" + params.get("price");
+</script>
+
+</body>
+</html>
