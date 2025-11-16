@@ -40,7 +40,6 @@ nav a {
 nav a:hover {
     color: #d179ae;
 }
-<<<<<<< HEAD
 
 .card-container {
     display: grid;
@@ -51,17 +50,6 @@ nav a:hover {
     margin: 40px auto 0 auto; /* top margin + center horizontally */
     padding: 0 10px; /* inner padding */
     box-sizing: border-box;
-=======
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 205px;
-    width: 100%;
-    padding:8px;
-     margin-top: 40px;
-     grid-template-rows:25px;
->>>>>>> 985ce309985b99afe0fb6c6904519e9f79117853
 }
 
 
@@ -96,25 +84,30 @@ footer {
     background: rgba(231, 170, 170, 0.6);
 }
 
-@media (max-width: 1024px) {
-    .card-container {
-        grid-template-columns: repeat(2, 1fr);
+/* Responsive - Tablets */
+@media (max-width: 768px) {
+    .header-section {
+        padding: 60px 15px;
+    }
+
+    .card {
+        width: 45%;
     }
 }
 
-/* Mobiles: 1 card per row */
-@media (max-width: 600px) {
-    .card-container {
-        grid-template-columns: 1fr;
+/* Responsive - Mobiles */
+@media (max-width: 480px) {
+    .header-section {
+        padding: 40px 10px;
+    }
+
+    .card {
+        width: 80%;
     }
 }
-
 img {
     max-width: 100%;
     height: auto;
     display: block;
 }
-
-
-
 
