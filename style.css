@@ -44,8 +44,8 @@ nav a:hover {
 .card-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-    gap: 25px; /* space between cards */
-    width: 90%; /* container width */
+    gap: 45px; /* space between cards */
+    width: 70%; /* container width */
     max-width: 1200px; /* optional max width */
     margin: 40px auto 0 auto; /* top margin + center horizontally */
     padding: 0 10px; /* inner padding */
@@ -61,6 +61,7 @@ nav a:hover {
     padding: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: 0.3s;
+    height: 240px; 
     cursor: pointer;
     color: black;
 }
