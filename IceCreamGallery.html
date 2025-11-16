@@ -1,183 +1,254 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-<title>
-        IceCream Gallery
-    </title><link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
+<head>
+    <title>IceCream Gallery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
-        body
-        {
+        body {
             text-align: center;
-            background-color: rgb(238, 221, 221);
+            background: linear-gradient(to bottom right, #ffd6e9, #d4e6ff);
+            font-family: "Merriweather", serif;
+            margin: 0;
         }
-        img{
-            height: 180px;
-            width: 280px;
-            
+
+        h1 {
+            margin-top: 20px;
+            color: #003a70;
+            text-shadow: 1px 1px #ffffff;
         }
-         .image-container
-        {  
+
+        .image-container {
             display: grid;
-            flex-wrap: wrap;
-        column-gap: 50px;
-        column-gap: 50px;
-        justify-items: center;
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-      row-gap: 60px;
-      grid-template-rows: 4fr;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            justify-items: center;
         }
-        .image{align-items: center;
-             width: 250px;
-            background-color: rgba(205, 137, 150, 0.666);
-            height: 300px;
-          border-radius: 8px;
-          border: 3px solid #ddd;
-     padding: 1px;
-      box-shadow: 10px 10px 8px rgba(218, 12, 12, 0.1);
-      overflow: hidden;
-       text-align: center;   
-        }
-        h4
-        {  font-size: 20px;
-     
-  font-family: "Merriweather", serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  font-variation-settings:
-}
 
+        .image {
+            width: 260px;
+            background: linear-gradient(145deg, #ffe2f1, #d4e8ff);
+            height: 358px;   /* UPDATED (360 → 358) */
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+        }
+
+        .image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 30px rgba(0, 70, 160, 0.25);
+        }
+
+        img {
+            height: 180px;
+            width: 250px;
+            border-radius: 10px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #003b65;
+            margin-top: -10px;
+        }
+
+        .btn {
+            background-color: #ff4f9d;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e6006f;
+        }
+
+        #fortune-box {
+            background: #fff4fa;
+            padding: 15px;
+            border-radius: 12px;
+            width: 80%;
+            margin: 20px auto;
+            font-size: 20px;
+            border: 2px solid #ffd1ec;
+            color: #d4006f;
+        }
     </style>
-     </head>
-     <body>
-        <h1> Welcome to  Icecream Gallery...!</h1>
-         <div class="image-container">
-         <div class="image">
-            <img src="images/strawberry.jpg" alt="strawberry">
-            <h4><b>Strawberry Icecream</b></h4>
-         </div>
-    <div class="image"> 
-        <img src="images/chocochip.jpeg" alt="chocochip">
-        <h4>
-            <b>
-                Regular chocochip Icecream
-            </b>
-        </h4>      
-        </div>   
-    <div class="image"> 
-        <img src="images/chocolateice.jpeg" alt="chocolateice">
-        <h4>
-            <b>
-                Chocolate Icecream
-            </b>
-        </h4>         
-        </div>
-        
-    <div class="image">   
-        <img src="images/vanilla.jpg" alt="vanilla"  >
-         <h4>
-            <b>
-                 vanilla Icecream
-            </b>
-        </h4> 
+</head>
 
-        </div>
-        <div class="image">
-            <img src="images/mint chocchip.jpeg" alt="mint chocchip.">
-             <h4>
-            <b>
-                Mint Chocochip Icecream
-            </b>
-        </h4>  </div> 
-        <div class="image">
-            <img src="images/rockyroad.jpeg" alt="rockyroad">
-             <h4>
-            <b>
-               Rocky road Icecream
-            </b>
-        </h4>  
-    </div>     
- <div class="image">
-            <img src="images/cookies&cream.jpeg" alt>
-             <h4>
-            <b>
-               Cookies and Cream Icecream
-            </b>
-        </h4> 
-     </div> 
-      <div class="image">
-            <img src= "images/lemon.jpeg" alt>
-             <h4>
-            <b>
-               Lemon flavored Icecream
-            </b>
-        </h4> 
-     </div>  <div class="image">
-            <img src="images/banana.jpeg" alt>
-             <h4>
-            <b>
-              Banana Icecream
-            </b>
-        </h4> 
-     </div>  <div class="image">
-            <img src="images/blackberry.jpeg" alt>
-             <h4>
-            <b>
-               Blackberry Icecream
-            </b>
-        </h4> 
-     </div>  <div class="image">
-            <img src="images/blueberry.jpeg" alt>
-             <h4>
-            <b>
-               Blueberry Icecream
-            </b>
-        </h4> 
-     </div>  <div class="image">
-            <img src="images/peanutbutter.jpeg" alt>
-             <h4>
-            <b>
-               PeanutButter Icecream
-            </b>
-        </h4> 
-     </div>  <div class="image">
-            <img src="images/caramel.jpeg" alt>
-             <h4>
-            <b>
-               Caramel Icecream
-            </b>
-        </h4> 
-     </div> 
-      <div class="image">
-            <img src="images/cherry.jpeg" alt>
-             <h4>
-            <b>
-               cherry Icecream
-            </b>
-        </h4> 
-     </div> 
-      <div class="image">
-            <img src="images/pistachio.webp" alt>
-             <h4>
-            <b>
-               Pistachio Icecream
-            </b>
-        </h4> 
-     </div>
-      <div class="image">
-            <img src="" alt>
-             <h4>
-            <b>
-               Others
-            </b>
-        </h4> 
-     </div>
+<body>
 
-     </body>
+<div id="fortune-box">🔮 Loading your Ice-Cream fortune...</div>
 
+<h1>Welcome to Icecream Gallery...!</h1>
+
+<div class="image-container">
+
+    <!-- 1. Strawberry -->
+    <div class="image" onclick="openProduct('Strawberry Icecream',80)">
+        <img src="images/strawberry.jpg">
+        <h4><b>Strawberry Icecream</b></h4>
+        <p class="price">₹80</p>
+        <button class="btn" onclick="addToCart(event,'Strawberry Icecream',80)">Add to Cart</button>
+    </div>
+
+    <!-- 2. ChocoChip -->
+    <div class="image" onclick="openProduct('Regular ChocoChip Icecream',90)">
+        <img src="images/chocochip.jpeg">
+        <h4><b>Regular Chocochip Icecream</b></h4>
+        <p class="price">₹90</p>
+        <button class="btn" onclick="addToCart(event,'ChocoChip Icecream',90)">Add to Cart</button>
+    </div>
+
+    <!-- 3. Chocolate -->
+    <div class="image" onclick="openProduct('Chocolate Icecream',85)">
+        <img src="images/chocolateice.jpeg">
+        <h4><b>Chocolate Icecream</b></h4>
+        <p class="price">₹85</p>
+        <button class="btn" onclick="addToCart(event,'Chocolate Icecream',85)">Add to Cart</button>
+    </div>
+
+    <!-- 4. Vanilla -->
+    <div class="image" onclick="openProduct('Vanilla Icecream',70)">
+        <img src="images/vanilla.jpg">
+        <h4><b>Vanilla Icecream</b></h4>
+        <p class="price">₹70</p>
+        <button class="btn" onclick="addToCart(event,'Vanilla Icecream',70)">Add to Cart</button>
+    </div>
+
+    <!-- 5. Mint ChocoChip -->
+    <div class="image" onclick="openProduct('Mint ChocoChip Icecream',95)">
+        <img src="images/mint chocchip.jpeg">
+        <h4><b>Mint Chocochip Icecream</b></h4>
+        <p class="price">₹95</p>
+        <button class="btn" onclick="addToCart(event,'Mint Chocochip',95)">Add to Cart</button>
+    </div>
+
+    <!-- 6. Rocky Road -->
+    <div class="image" onclick="openProduct('Rocky Road Icecream',100)">
+        <img src="images/rockyroad.jpeg">
+        <h4><b>Rocky Road Icecream</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart(event,'Rocky Road',100)">Add to Cart</button>
+    </div>
+
+    <!-- 7. Cookies & Cream -->
+    <div class="image" onclick="openProduct('Cookies & Cream Icecream',110)">
+        <img src="images/cookies&cream.jpeg">
+        <h4><b>Cookies & Cream Icecream</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart(event,'Cookies & Cream',110)">Add to Cart</button>
+    </div>
+
+    <!-- 8. Lemon -->
+    <div class="image" onclick="openProduct('Lemon Icecream',75)">
+        <img src="images/lemon.jpeg">
+        <h4><b>Lemon Icecream</b></h4>
+        <p class="price">₹75</p>
+        <button class="btn" onclick="addToCart(event,'Lemon',75)">Add to Cart</button>
+    </div>
+
+    <!-- 9. Banana -->
+    <div class="image" onclick="openProduct('Banana Icecream',85)">
+        <img src="images/banana.jpeg">
+        <h4><b>Banana Icecream</b></h4>
+        <p class="price">₹85</p>
+        <button class="btn" onclick="addToCart(event,'Banana',85)">Add to Cart</button>
+    </div>
+
+    <!-- 10. Blackberry -->
+    <div class="image" onclick="openProduct('Blackberry Icecream',120)">
+        <img src="images/blackberry.jpeg">
+        <h4><b>Blackberry Icecream</b></h4>
+        <p class="price">₹120</p>
+        <button class="btn" onclick="addToCart(event,'Blackberry',120)">Add to Cart</button>
+    </div>
+
+    <!-- 11. Blueberry -->
+    <div class="image" onclick="openProduct('Blueberry Icecream',130)">
+        <img src="images/blueberry.jpeg">
+        <h4><b>Blueberry Icecream</b></h4>
+        <p class="price">₹130</p>
+        <button class="btn" onclick="addToCart(event,'Blueberry',130)">Add to Cart</button>
+    </div>
+
+    <!-- 12. Peanut Butter -->
+    <div class="image" onclick="openProduct('Peanut Butter Icecream',140)">
+        <img src="images/peanutbutter.jpeg">
+        <h4><b>Peanut Butter Icecream</b></h4>
+        <p class="price">₹140</p>
+        <button class="btn" onclick="addToCart(event,'Peanut Butter',140)">Add to Cart</button>
+    </div>
+
+    <!-- 13. Caramel -->
+    <div class="image" onclick="openProduct('Caramel Icecream',125)">
+        <img src="images/caramel.jpeg">
+        <h4><b>Caramel Icecream</b></h4>
+        <p class="price">₹125</p>
+        <button class="btn" onclick="addToCart(event,'Caramel',125)">Add to Cart</button>
+    </div>
+
+    <!-- 14. Cherry -->
+    <div class="image" onclick="openProduct('Cherry Icecream',110)">
+        <img src="images/cherry.jpeg">
+        <h4><b>Cherry Icecream</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart(event,'Cherry',110)">Add to Cart</button>
+    </div>
+
+    <!-- 15. Pistachio -->
+    <div class="image" onclick="openProduct('Pistachio Icecream',150)">
+        <img src="images/pistachio.webp">
+        <h4><b>Pistachio Icecream</b></h4>
+        <p class="price">₹150</p>
+        <button class="btn" onclick="addToCart(event,'Pistachio',150)">Add to Cart</button>
+    </div>
+
+    <!-- 16. Others -->
+    <div class="image" onclick="openProduct('Other Icecream',100)">
+        <img src="images/others.png">
+        <h4><b>Others</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart(event,'Others',100)">Add to Cart</button>
+    </div>
+
+</div>
+
+<script>
+    function addToCart(event, name, price) {
+        event.stopPropagation();
+        alert(name + " added to cart! ₹" + price);
+    }
+
+    function openProduct(name, price) {
+        window.location.href = "product.html?name=" + encodeURIComponent(name) + "&price=" + price;
+    }
+
+    const fortunes = [
+        "🍓 Strawberry brings sweetness today!",
+        "🍫 Chocolate gives strong energy!",
+        "🍋 Lemon refreshes your thoughts!",
+        "🍒 Cherry brings positivity!",
+        "🍨 Vanilla gives you peace!",
+        "🫐 Blueberry brings good luck!"
+    ];
+
+    document.getElementById("fortune-box").innerHTML =
+        fortunes[Math.floor(Math.random() * fortunes.length)];
+</script>
+
+</body>
 </html>
