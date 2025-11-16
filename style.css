@@ -40,16 +40,13 @@ nav a {
 nav a:hover {
     color: #d179ae;
 }
-
-/* Cards Grid */
 .card-container {
     display: flex;
     flex-wrap: wrap;
-    
-    justify-content: center;
-    gap: 25px;
+ justify-content: center;
+    gap: 105px;
     width: 100%;
-    padding: 0 10px;
+    padding:8px;
      margin-top: 100px;
      grid-template-rows:25px;
 }
@@ -110,5 +107,6 @@ img {
     height: auto;
     display: block;
 }
+
 
 
