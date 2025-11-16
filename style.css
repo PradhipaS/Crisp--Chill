@@ -4,8 +4,14 @@ body {
     text-align: center;
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom right, #b94981, #87b1d3);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
-
+* {
+    box-sizing: border-box;
+    max-width: 100%;
+}
 /* Header Background Image */
 .header-section {
     background: url("Images/blur.png") no-repeat center center/cover;
@@ -36,12 +42,18 @@ nav a:hover {
 
 /* Cards Grid */
 .card-container {
-    margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
+    width: 100%;
+    padding: 0 10px;
+     display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Only 4 cards */
+    gap: 20px;
+    padding: 20px;
 }
+
 
 .card {
     width: 200px;
@@ -93,3 +105,9 @@ footer {
         width: 80%;
     }
 }
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
