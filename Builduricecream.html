@@ -94,6 +94,7 @@
     </select>
 
     <button class="btn" onclick="calculate()">Create Ice-Cream</button>
+    <button class="btn" onclick="orderNow()" style="margin-top:10px;">Order Now</button>
 
     <div class="summary" id="output">
         🍨 Your custom ice-cream will appear here.
@@ -102,6 +103,8 @@
 </div>
 
 <script>
+let selectedIcecream = null;
+
 function calculate(){
     const base = document.getElementById("base").value.split("|");
     const cont = document.getElementById("container").value.split("|");
@@ -109,6 +112,11 @@ function calculate(){
     const top = document.getElementById("toppings").value.split("|");
 
     const total = Number(base[1]) + Number(cont[1]) + Number(mix[1]) + Number(top[1]);
+
+    selectedIcecream = {
+        name: `${base[0]} Icecream (${cont[0]}, ${mix[0]}, ${top[0]})`,
+        price: total
+    };
 
     document.getElementById("output").innerHTML = `
         <b>🍦 Your Custom Ice-Cream:</b><br><br>
@@ -119,6 +127,20 @@ function calculate(){
         <br>
         <b>Total Price: ₹${total}</b>
     `;
+}
+
+function orderNow(){
+    if(!selectedIcecream){
+        alert("Please create your ice-cream first!");
+        return;
+    }
+
+    // Save selected ice cream to localStorage
+    const cart = [selectedIcecream]; // single item
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // Redirect to payment page
+    window.location.href = "payment.html";
 }
 </script>
 
