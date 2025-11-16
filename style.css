@@ -41,29 +41,30 @@ nav a:hover {
     color: #d179ae;
 }
 
-/* Cards Grid */
 .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-    width: 100%;
-    padding: 0 10px;
-     margin-top: 40px;
-     grid-template-rows:25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 25px; /* space between cards */
+    width: 90%; /* container width */
+    max-width: 1200px; /* optional max width */
+    margin: 40px auto 0 auto; /* top margin + center horizontally */
+    padding: 0 10px; /* inner padding */
+    box-sizing: border-box;
 }
 
 
+
 .card {
-    width: 200px;
+    width: 100%; /* fills grid cell */
     background: rgb(245, 205, 205);
     border-radius: 12px;
-    padding: 15px;
+    padding: 5px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     transition: 0.3s;
     cursor: pointer;
     color: black;
 }
+
 
 .card img {
     width: 100%;
@@ -83,27 +84,19 @@ footer {
     background: rgba(231, 170, 170, 0.6);
 }
 
-/* Responsive - Tablets */
-@media (max-width: 768px) {
-    .header-section {
-        padding: 60px 15px;
-    }
-
-    .card {
-        width: 45%;
+@media (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Responsive - Mobiles */
-@media (max-width: 480px) {
-    .header-section {
-        padding: 40px 10px;
-    }
-
-    .card {
-        width: 80%;
+/* Mobiles: 1 card per row */
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
     }
 }
+
 img {
     max-width: 100%;
     height: auto;
