@@ -32,7 +32,7 @@
         .image {
             width: 260px;
             background: linear-gradient(145deg, #ffe2f1, #d4e8ff);
-            height: 358px;   /* UPDATED (360 → 358) */
+            height: 358px;
             border-radius: 15px;
             border: 2px solid rgba(255, 255, 255, 0.6);
             padding: 10px;
@@ -40,6 +40,9 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .image:hover {
@@ -57,7 +60,6 @@
             font-size: 18px;
             font-weight: bold;
             color: #003b65;
-            margin-top: -10px;
         }
 
         .btn {
@@ -67,7 +69,6 @@
             border: none;
             border-radius: 6px;
             cursor: pointer;
-            margin-top: 5px;
             font-weight: bold;
             transition: 0.3s;
         }
@@ -76,178 +77,127 @@
             background-color: #e6006f;
         }
 
-        #fortune-box {
-            background: #fff4fa;
+        /* Cart Styles */
+        #cart {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
             padding: 15px;
+            background: #fff4fa;
             border-radius: 12px;
-            width: 80%;
-            margin: 20px auto;
-            font-size: 20px;
             border: 2px solid #ffd1ec;
-            color: #d4006f;
+            color: #003b65;
+            text-align: left;
+        }
+
+        #cart h2 {
+            text-align: center;
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffd1ec;
+        }
+
+        #cart button {
+            background-color: #e6006f;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #cart button:hover {
+            background-color: #ff4f9d;
         }
     </style>
 </head>
 
 <body>
 
-<div id="fortune-box">🔮 Loading your Ice-Cream fortune...</div>
-
-<h1>Welcome to Icecream Gallery...!</h1>
+<h1>Welcome to Icecream Gallery!</h1>
 
 <div class="image-container">
 
-    <!-- 1. Strawberry -->
-    <div class="image" onclick="openProduct('Strawberry Icecream',80)">
-        <img src="images/strawberry.jpg">
+    <!-- Sample card -->
+    <div class="image">
+        <img src="Images/strawberry.jpg">
         <h4><b>Strawberry Icecream</b></h4>
         <p class="price">₹80</p>
-        <button class="btn" onclick="addToCart(event,'Strawberry Icecream',80)">Add to Cart</button>
+        <button class="btn" onclick="addToCart('Strawberry Icecream', 80)">Add to Cart</button>
     </div>
 
-    <!-- 2. ChocoChip -->
-    <div class="image" onclick="openProduct('Regular ChocoChip Icecream',90)">
-        <img src="images/chocochip.jpeg">
-        <h4><b>Regular Chocochip Icecream</b></h4>
+    <div class="image">
+        <img src="Images/chocochip.jpeg">
+        <h4><b>Chocochip Icecream</b></h4>
         <p class="price">₹90</p>
-        <button class="btn" onclick="addToCart(event,'ChocoChip Icecream',90)">Add to Cart</button>
+        <button class="btn" onclick="addToCart('Chocochip Icecream', 90)">Add to Cart</button>
     </div>
 
-    <!-- 3. Chocolate -->
-    <div class="image" onclick="openProduct('Chocolate Icecream',85)">
-        <img src="images/chocolateice.jpeg">
+    <div class="image">
+        <img src="Images/chocolateice.jpeg">
         <h4><b>Chocolate Icecream</b></h4>
         <p class="price">₹85</p>
-        <button class="btn" onclick="addToCart(event,'Chocolate Icecream',85)">Add to Cart</button>
+        <button class="btn" onclick="addToCart('Chocolate Icecream', 85)">Add to Cart</button>
     </div>
 
-    <!-- 4. Vanilla -->
-    <div class="image" onclick="openProduct('Vanilla Icecream',70)">
-        <img src="images/vanilla.jpg">
+    <div class="image">
+        <img src="Images/vanilla.jpg">
         <h4><b>Vanilla Icecream</b></h4>
         <p class="price">₹70</p>
-        <button class="btn" onclick="addToCart(event,'Vanilla Icecream',70)">Add to Cart</button>
-    </div>
-
-    <!-- 5. Mint ChocoChip -->
-    <div class="image" onclick="openProduct('Mint ChocoChip Icecream',95)">
-        <img src="images/mint chocchip.jpeg">
-        <h4><b>Mint Chocochip Icecream</b></h4>
-        <p class="price">₹95</p>
-        <button class="btn" onclick="addToCart(event,'Mint Chocochip',95)">Add to Cart</button>
-    </div>
-
-    <!-- 6. Rocky Road -->
-    <div class="image" onclick="openProduct('Rocky Road Icecream',100)">
-        <img src="images/rockyroad.jpeg">
-        <h4><b>Rocky Road Icecream</b></h4>
-        <p class="price">₹100</p>
-        <button class="btn" onclick="addToCart(event,'Rocky Road',100)">Add to Cart</button>
-    </div>
-
-    <!-- 7. Cookies & Cream -->
-    <div class="image" onclick="openProduct('Cookies & Cream Icecream',110)">
-        <img src="images/cookies&cream.jpeg">
-        <h4><b>Cookies & Cream Icecream</b></h4>
-        <p class="price">₹110</p>
-        <button class="btn" onclick="addToCart(event,'Cookies & Cream',110)">Add to Cart</button>
-    </div>
-
-    <!-- 8. Lemon -->
-    <div class="image" onclick="openProduct('Lemon Icecream',75)">
-        <img src="images/lemon.jpeg">
-        <h4><b>Lemon Icecream</b></h4>
-        <p class="price">₹75</p>
-        <button class="btn" onclick="addToCart(event,'Lemon',75)">Add to Cart</button>
-    </div>
-
-    <!-- 9. Banana -->
-    <div class="image" onclick="openProduct('Banana Icecream',85)">
-        <img src="images/banana.jpeg">
-        <h4><b>Banana Icecream</b></h4>
-        <p class="price">₹85</p>
-        <button class="btn" onclick="addToCart(event,'Banana',85)">Add to Cart</button>
-    </div>
-
-    <!-- 10. Blackberry -->
-    <div class="image" onclick="openProduct('Blackberry Icecream',120)">
-        <img src="images/blackberry.jpeg">
-        <h4><b>Blackberry Icecream</b></h4>
-        <p class="price">₹120</p>
-        <button class="btn" onclick="addToCart(event,'Blackberry',120)">Add to Cart</button>
-    </div>
-
-    <!-- 11. Blueberry -->
-    <div class="image" onclick="openProduct('Blueberry Icecream',130)">
-        <img src="images/blueberry.jpeg">
-        <h4><b>Blueberry Icecream</b></h4>
-        <p class="price">₹130</p>
-        <button class="btn" onclick="addToCart(event,'Blueberry',130)">Add to Cart</button>
-    </div>
-
-    <!-- 12. Peanut Butter -->
-    <div class="image" onclick="openProduct('Peanut Butter Icecream',140)">
-        <img src="images/peanutbutter.jpeg">
-        <h4><b>Peanut Butter Icecream</b></h4>
-        <p class="price">₹140</p>
-        <button class="btn" onclick="addToCart(event,'Peanut Butter',140)">Add to Cart</button>
-    </div>
-
-    <!-- 13. Caramel -->
-    <div class="image" onclick="openProduct('Caramel Icecream',125)">
-        <img src="images/caramel.jpeg">
-        <h4><b>Caramel Icecream</b></h4>
-        <p class="price">₹125</p>
-        <button class="btn" onclick="addToCart(event,'Caramel',125)">Add to Cart</button>
-    </div>
-
-    <!-- 14. Cherry -->
-    <div class="image" onclick="openProduct('Cherry Icecream',110)">
-        <img src="images/cherry.jpeg">
-        <h4><b>Cherry Icecream</b></h4>
-        <p class="price">₹110</p>
-        <button class="btn" onclick="addToCart(event,'Cherry',110)">Add to Cart</button>
-    </div>
-
-    <!-- 15. Pistachio -->
-    <div class="image" onclick="openProduct('Pistachio Icecream',150)">
-        <img src="images/pistachio.webp">
-        <h4><b>Pistachio Icecream</b></h4>
-        <p class="price">₹150</p>
-        <button class="btn" onclick="addToCart(event,'Pistachio',150)">Add to Cart</button>
-    </div>
-
-    <!-- 16. Others -->
-    <div class="image" onclick="openProduct('Other Icecream',100)">
-        <img src="images/others.png">
-        <h4><b>Others</b></h4>
-        <p class="price">₹100</p>
-        <button class="btn" onclick="addToCart(event,'Others',100)">Add to Cart</button>
+        <button class="btn" onclick="addToCart('Vanilla Icecream', 70)">Add to Cart</button>
     </div>
 
 </div>
 
+<!-- Cart -->
+<div id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+</div>
+
 <script>
-    function addToCart(event, name, price) {
-        event.stopPropagation();
-        alert(name + " added to cart! ₹" + price);
+    let cart = [];
+
+    function addToCart(name, price) {
+        // Check if item is already in cart
+        const existing = cart.find(item => item.name === name);
+        if(existing) {
+            alert(name + " is already in cart!");
+            return;
+        }
+        cart.push({name, price});
+        renderCart();
     }
 
-    function openProduct(name, price) {
-        window.location.href = "product.html?name=" + encodeURIComponent(name) + "&price=" + price;
+    function removeFromCart(name) {
+        cart = cart.filter(item => item.name !== name);
+        renderCart();
     }
 
-    const fortunes = [
-        "🍓 Strawberry brings sweetness today!",
-        "🍫 Chocolate gives strong energy!",
-        "🍋 Lemon refreshes your thoughts!",
-        "🍒 Cherry brings positivity!",
-        "🍨 Vanilla gives you peace!",
-        "🫐 Blueberry brings good luck!"
-    ];
+    function renderCart() {
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
 
-    document.getElementById("fortune-box").innerHTML =
-        fortunes[Math.floor(Math.random() * fortunes.length)];
+        if(cart.length === 0) {
+            cartItems.innerHTML = '<li>Your cart is empty.</li>';
+            return;
+        }
+
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeFromCart('${item.name}')">Remove</button>`;
+            cartItems.appendChild(li);
+        });
+    }
 </script>
 
 </body>
