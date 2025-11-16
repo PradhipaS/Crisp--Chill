@@ -43,11 +43,11 @@ nav a:hover {
 .card-container {
     display: flex;
     flex-wrap: wrap;
- justify-content: center;
-    gap: 105px;
+    justify-content: center;
+    gap: 205px;
     width: 100%;
     padding:8px;
-     margin-top: 100px;
+     margin-top: 40px;
      grid-template-rows:25px;
 }
 
@@ -107,6 +107,7 @@ img {
     height: auto;
     display: block;
 }
+
 
 
 
