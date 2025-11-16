@@ -127,7 +127,7 @@
 
 <div class="image-container">
 
-    <!-- Sample card -->
+    <!-- 16 IceCream Cards -->
     <div class="image">
         <img src="Images/strawberry.jpg">
         <h4><b>Strawberry Icecream</b></h4>
@@ -156,6 +156,90 @@
         <button class="btn" onclick="addToCart('Vanilla Icecream', 70)">Add to Cart</button>
     </div>
 
+    <div class="image">
+        <img src="Images/mint chocchip.jpeg">
+        <h4><b>Mint Chocochip Icecream</b></h4>
+        <p class="price">₹95</p>
+        <button class="btn" onclick="addToCart('Mint Chocochip Icecream', 95)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/rockyroad.jpeg">
+        <h4><b>Rocky Road Icecream</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart('Rocky Road Icecream', 100)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/cookies&cream.jpeg">
+        <h4><b>Cookies & Cream Icecream</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart('Cookies & Cream Icecream', 110)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/lemon.jpeg">
+        <h4><b>Lemon Icecream</b></h4>
+        <p class="price">₹75</p>
+        <button class="btn" onclick="addToCart('Lemon Icecream', 75)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/banana.jpeg">
+        <h4><b>Banana Icecream</b></h4>
+        <p class="price">₹85</p>
+        <button class="btn" onclick="addToCart('Banana Icecream', 85)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/blackberry.jpeg">
+        <h4><b>Blackberry Icecream</b></h4>
+        <p class="price">₹120</p>
+        <button class="btn" onclick="addToCart('Blackberry Icecream', 120)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/blueberry.jpeg">
+        <h4><b>Blueberry Icecream</b></h4>
+        <p class="price">₹130</p>
+        <button class="btn" onclick="addToCart('Blueberry Icecream', 130)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/peanutbutter.jpeg">
+        <h4><b>Peanut Butter Icecream</b></h4>
+        <p class="price">₹140</p>
+        <button class="btn" onclick="addToCart('Peanut Butter Icecream', 140)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/caramel.jpeg">
+        <h4><b>Caramel Icecream</b></h4>
+        <p class="price">₹125</p>
+        <button class="btn" onclick="addToCart('Caramel Icecream', 125)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/cherry.jpeg">
+        <h4><b>Cherry Icecream</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart('Cherry Icecream', 110)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/pistachio.webp">
+        <h4><b>Pistachio Icecream</b></h4>
+        <p class="price">₹150</p>
+        <button class="btn" onclick="addToCart('Pistachio Icecream', 150)">Add to Cart</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/others.png">
+        <h4><b>Other Icecream</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart('Other Icecream', 100)">Add to Cart</button>
+    </div>
+
 </div>
 
 <!-- Cart -->
@@ -168,7 +252,6 @@
     let cart = [];
 
     function addToCart(name, price) {
-        // Check if item is already in cart
         const existing = cart.find(item => item.name === name);
         if(existing) {
             alert(name + " is already in cart!");
