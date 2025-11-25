@@ -1,180 +1,299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Puri & Snacks Gallery</title>
+    <title>Pani Puri & Chat Gallery</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Merriweather', serif;
-            margin: 0;
-            padding: 0;
-            background: #fffaf0;
             text-align: center;
-        }
-        h1 {
-            margin: 20px 0;
-            color: #d35400;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .card {
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 15px;
-        }
-        .card-content h2 {
+            background: linear-gradient(to bottom right, #9a3e88, #ffe4f0);
+            font-family: "Merriweather", serif;
             margin: 0;
-            color: #e67e22;
+            color:black;
         }
-        .card-content p {
-            font-size: 14px;
-            color: #555;
-            margin: 10px 0;
+
+        h1 {
+            margin-top: 20px;
+            color: #8b0000;
+            text-shadow: 1px 1px #ffffff;
         }
+
+        .image-container {
+            display: grid;
+            padding: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            justify-items: center;
+        }
+
+        .image {
+            width: 260px;
+            background: linear-gradient(145deg, #ffe8d6, #ffd8ec);
+            height: 400px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 30px rgba(180, 60, 0, 0.25);
+        }
+
+        img {
+            height: 180px;
+            width: 250px;
+            border-radius: 10px;
+        }
+
         .price {
+            font-size: 18px;
             font-weight: bold;
-            color: #c0392b;
+            color: #8b0000;
         }
-        @media(max-width: 600px){
-            .card img {
-                height: 180px;
-            }
+
+        .btn {
+            background-color: #ff5c5c;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 4px 0;
+        }
+
+        .btn:hover {
+            background-color: #d40000;
+        }
+
+        #cart {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #fff4f4;
+            border-radius: 12px;
+            border: 2px solid #ffb3b3;
+            color: #8b0000;
+            text-align: left;
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffd1d1;
+        }
+
+        #cart button {
+            background-color: #d40000;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
-    <h1>Puri & Delights</h1>
-    <div class="gallery">
 
-        <!-- Snacks and Puris -->
-        <div class="card">
-            <img src="Images/Cheese_Bhel.jpeg" alt="Cheese Bhel">
-            <div class="card-content">
-                <h2>Cheese Bhel</h2>
-                <p>Crunchy bhel mixed with cheese and tangy chutneys for a cheesy twist.</p>
-                <p class="price">₹90</p>
-            </div>
-        </div>
+<h1>Welcome to Puri Gallery!</h1>
 
-       
+<div class="image-container">
 
-        <div class="card">
-            <img src="Images/Dahi_Puri.jpg" alt="Dahi Puri">
-            <div class="card-content">
-                <h2>Dahi Puri</h2>
-                <p>Crispy puris filled with potato, chutneys, and creamy yogurt topping.</p>
-                <p class="price">₹80</p>
-            </div>
-        </div>
+    <!-- ITEMS START -->
 
-        
-
-        <div class="card">
-            <img src="Images/Pani.webp" alt="Pani Puri">
-            <div class="card-content">
-                <h2>Pani Puri</h2>
-                <p>Crispy hollow puris with spicy tangy water and potato stuffing.</p>
-                <p class="price">₹60</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/Ragda_Patties.jpeg" alt="Ragda Patties">
-            <div class="card-content">
-                <h2>Ragda Patties</h2>
-                <p>Spicy white peas curry served with potato patties and chutneys.</p>
-                <p class="price">₹90</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/Ragda_Puri.jpeg" alt="Ragda Puri">
-            <div class="card-content">
-                <h2>Ragda Puri</h2>
-                <p>Soft puris served with white peas curry, onions, and tangy chutney.</p>
-                <p class="price">₹90</p>
-            </div>
-        </div>
-
-       
-
-        <div class="card">
-            <img src="Images/dry_bhel.jpeg" alt="Dry Bhel">
-            <div class="card-content">
-                <h2>Dry Bhel</h2>
-                <p>Light and crunchy snack mix with chutneys, onions, and spices.</p>
-                <p class="price">₹60</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/masala.jpeg" alt="Masala Puri">
-            <div class="card-content">
-                <h2>Masala Puri</h2>
-                <p>Puri topped with spicy masala, onions, chutney, and sev.</p>
-                <p class="price">₹80</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/pani_1.jpg" alt="Pani Puri Special">
-            <div class="card-content">
-                <h2>Pani Puri Special</h2>
-                <p>Extra tangy and spicy water served with crispy puris and fillings.</p>
-                <p class="price">₹70</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/plain.jpg" alt="Plain Puri">
-            <div class="card-content">
-                <h2>Plain Puri</h2>
-                <p>Simple crisp puris, perfect to enjoy with your favorite curry or chutney.</p>
-                <p class="price">₹50</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/sev.jpg" alt="Sev Puri">
-            <div class="card-content">
-                <h2>Sev Puri</h2>
-                <p>Flat puris topped with chopped onions, tomatoes, chutneys, and crunchy sev.</p>
-                <p class="price">₹70</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="Images/stuff.JPG" alt="Stuffed Puri">
-            <div class="card-content">
-                <h2>Stuffed Puri</h2>
-                <p>Puri filled with spiced potato mix, chutneys, and special toppings.</p>
-                <p class="price">₹85</p>
-            </div>
-        </div>
-
+    <div class="image">
+        <img src="Images/Cheese_Bhel.jpeg">
+        <h4><b>Cheese Bhel</b></h4>
+        <p class="price">₹80</p>
+        <button class="btn" onclick="addToCart('Cheese Bhel', 80)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Cheese Bhel', 80)">Order Now</button>
     </div>
+
+    <div class="image">
+        <img src="Images/Cheese_Dabeli.jpeg">
+        <h4><b>Cheese Dabeli</b></h4>
+        <p class="price">₹90</p>
+        <button class="btn" onclick="addToCart('Cheese Dabeli', 90)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Cheese Dabeli', 90)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Dahi_Puri.jpg">
+        <h4><b>Dahi Puri</b></h4>
+        <p class="price">₹70</p>
+        <button class="btn" onclick="addToCart('Dahi Puri', 70)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Dahi Puri', 70)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Kacchi_Dabeli.jpeg">
+        <h4><b>Kacchi Dabeli</b></h4>
+        <p class="price">₹60</p>
+        <button class="btn" onclick="addToCart('Kacchi Dabeli', 60)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Kacchi Dabeli', 60)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Pani.webp">
+        <h4><b>Pani Puri Special</b></h4>
+        <p class="price">₹50</p>
+        <button class="btn" onclick="addToCart('Pani Puri Special', 50)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Pani Puri Special', 50)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Ragda_Patties.jpeg">
+        <h4><b>Ragda Patties</b></h4>
+        <p class="price">₹90</p>
+        <button class="btn" onclick="addToCart('Ragda Patties', 90)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Ragda Patties', 90)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Ragda_Puri.jpeg">
+        <h4><b>Ragda Puri</b></h4>
+        <p class="price">₹75</p>
+        <button class="btn" onclick="addToCart('Ragda Puri', 75)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Ragda Puri', 75)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/Samosa_Chat.jpeg">
+        <h4><b>Samosa Chat</b></h4>
+        <p class="price">₹85</p>
+        <button class="btn" onclick="addToCart('Samosa Chat', 85)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Samosa Chat', 85)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/dry_bhel.jpeg">
+        <h4><b>Dry Bhel</b></h4>
+        <p class="price">₹60</p>
+        <button class="btn" onclick="addToCart('Dry Bhel', 60)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Dry Bhel', 60)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/masala.jpeg">
+        <h4><b>Masala Puri</b></h4>
+        <p class="price">₹55</p>
+        <button class="btn" onclick="addToCart('Masala Puri', 55)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Masala Puri', 55)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/pani_1.jpg">
+        <h4><b>Pani Puri (Classic)</b></h4>
+        <p class="price">₹45</p>
+        <button class="btn" onclick="addToCart('Pani Puri Classic', 45)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Pani Puri Classic', 45)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/plain.jpg">
+        <h4><b>Plain Puri Pack (25 pcs)</b></h4>
+        <p class="price">₹40</p>
+        <button class="btn" onclick="addToCart('Plain Puri Pack', 40)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Plain Puri Pack', 40)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/sev.jpg">
+        <h4><b>Special Sev</b></h4>
+        <p class="price">₹30</p>
+        <button class="btn" onclick="addToCart('Special Sev', 30)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Special Sev', 30)">Order Now</button>
+    </div>
+
+    <div class="image">
+        <img src="Images/stuff.JPG">
+        <h4><b>Puri Stuffing</b></h4>
+        <p class="price">₹35</p>
+        <button class="btn" onclick="addToCart('Puri Stuffing', 35)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Puri Stuffing', 35)">Order Now</button>
+    </div>
+
+    <!-- ITEMS END -->
+</div>
+
+<!-- Cart Section -->
+<div id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+</div>
+
+<script>
+    let cart = [];
+    let isSignedIn = false; // set true after login
+
+    function addToCart(name, price) {
+        if(!isSignedIn) {
+            alert("Please sign in to add items to cart.");
+            window.location.href = "signin.html";
+            return;
+        }
+
+        const exists = cart.find(i => i.name === name);
+        if(exists){
+            alert(name + " is already in your cart!");
+            return;
+        }
+
+        cart.push({name, price});
+        renderCart();
+    }
+
+    function orderNow(name, price){
+        if(!isSignedIn){
+            alert("Please sign in to order.");
+            window.location.href = "signin.html";
+            return;
+        }
+        alert("Order placed for " + name + " (₹" + price + ")");
+    }
+
+    function removeFromCart(name){
+        cart = cart.filter(i => i.name !== name);
+        renderCart();
+    }
+
+    function renderCart(){
+        const list = document.getElementById('cart-items');
+        list.innerHTML = "";
+
+        if(cart.length === 0){
+            list.innerHTML = "<li>Your cart is empty.</li>";
+            return;
+        }
+
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.innerHTML = `${item.name} - ₹${item.price} <button onclick="removeFromCart('${item.name}')">Remove</button>`;
+            list.appendChild(li);
+        });
+    }
+</script>
+
 </body>
 </html>
+

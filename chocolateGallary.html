@@ -1,115 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chocolate Gallery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f2f2;
-            margin: 0;
-            padding: 0;
             text-align: center;
+            background: linear-gradient(to bottom right, #fff0d6, #ffe1f2);
+            font-family: "Merriweather", serif;
+            margin: 0;
+            color: black;
         }
 
         h1 {
-            padding: 20px;
+            margin-top: 20px;
             color: #5a2d0c;
+            text-shadow: 1px 1px #ffffff;
         }
 
-        .gallery {
+        .image-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
+            padding: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            justify-items: center;
         }
 
-        .card {
-            background-color: #fff;
+        .image {
+            width: 260px;
+            background: linear-gradient(145deg, #ffe7c9, #ffd6ea);
+            height: 400px;
             border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+        .image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 30px rgba(120, 50, 0, 0.25);
         }
 
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        img {
+            height: 180px;
+            width: 250px;
+            border-radius: 10px;
         }
 
-        .card-content {
-            padding: 15px;
-        }
-
-        .card-content h3 {
-            margin: 10px 0 5px 0;
+        .price {
+            font-size: 18px;
+            font-weight: bold;
             color: #5a2d0c;
         }
 
-        .card-content p {
-            margin: 0;
-            color: #777;
-            font-size: 14px;
+        .btn {
+            background-color: #7b3f00;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 4px 0;
+        }
+
+        .btn:hover {
+            background-color: #4e2600;
+        }
+
+        #cart {
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #fff7f2;
+            border-radius: 12px;
+            border: 2px solid #e4b38f;
+            color: #5a2d0c;
+            text-align: left;
+        }
+
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #eec8b3;
+        }
+
+        #cart button {
+            background-color: #b34700;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Chocolate Gallery</h1>
+<h1>Chocolate Gallery</h1>
 
-    <div class="gallery">
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=Dark+Chocolate" alt="Dark Chocolate">
-            <div class="card-content">
-                <h3>Dark Chocolate</h3>
-                <p>Rich and bitter, high cocoa content.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=Milk+Chocolate" alt="Milk Chocolate">
-            <div class="card-content">
-                <h3>Milk Chocolate</h3>
-                <p>Sweet and creamy chocolate with milk solids.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=White+Chocolate" alt="White Chocolate">
-            <div class="card-content">
-                <h3>White Chocolate</h3>
-                <p>Sweet, creamy, made from cocoa butter.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=Ruby+Chocolate" alt="Ruby Chocolate">
-            <div class="card-content">
-                <h3>Ruby Chocolate</h3>
-                <p>Fruity, slightly tangy, pink chocolate.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=Truffles" alt="Truffles">
-            <div class="card-content">
-                <h3>Chocolate Truffles</h3>
-                <p>Soft, round chocolates with creamy centers.</p>
-            </div>
-        </div>
-        <div class="card">
-            <img src="https://via.placeholder.com/200x200.png?text=Nut+Chocolate" alt="Nut Chocolate">
-            <div class="card-content">
-                <h3>Nut Chocolates</h3>
-                <p>Crunchy and delicious with almonds or hazelnuts.</p>
-            </div>
-        </div>
+<div class="image-container">
+
+    <!-- 1 -->
+    <div class="image">
+        <img src="Images/dark.jpg">
+        <h4><b>Dark Chocolate</b></h4>
+        <p class="price">₹120</p>
+        <button class="btn" onclick="addToCart('Dark Chocolate', 120)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Dark Chocolate', 120)">Order Now</button>
     </div>
+
+    <!-- 2 -->
+    <div class="image">
+        <img src="Images/milk.jpg">
+        <h4><b>Milk Chocolate</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart('Milk Chocolate', 110)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Milk Chocolate', 110)">Order Now</button>
+    </div>
+
+    <!-- 3 -->
+    <div class="image">
+        <img src="Images/white.jpg">
+        <h4><b>White Chocolate</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart('White Chocolate', 100)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('White Chocolate', 100)">Order Now</button>
+    </div>
+
+    <!-- 4 -->
+    <div class="image">
+        <img src="Images/ruby.jpg">
+        <h4><b>Ruby Chocolate</b></h4>
+        <p class="price">₹150</p>
+        <button class="btn" onclick="addToCart('Ruby Chocolate', 150)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Ruby Chocolate', 150)">Order Now</button>
+    </div>
+
+    <!-- 5 -->
+    <div class="image">
+        <img src="Images/truffle.jpg">
+        <h4><b>Chocolate Truffles</b></h4>
+        <p class="price">₹180</p>
+        <button class="btn" onclick="addToCart('Chocolate Truffles', 180)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Chocolate Truffles', 180)">Order Now</button>
+    </div>
+
+    <!-- 6 -->
+    <div class="image">
+        <img src="Images/nut.jpg">
+        <h4><b>Nut Chocolate Bar</b></h4>
+        <p class="price">₹130</p>
+        <button class="btn" onclick="addToCart('Nut Chocolate Bar', 130)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Nut Chocolate Bar', 130)">Order Now</button>
+    </div>
+
+    <!-- 7 -->
+    <div class="image">
+        <img src="Images/caramel.jpg">
+        <h4><b>Caramel Filled Chocolate</b></h4>
+        <p class="price">₹140</p>
+        <button class="btn" onclick="addToCart('Caramel Filled Chocolate', 140)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Caramel Filled Chocolate', 140)">Order Now</button>
+    </div>
+
+    <!-- 8 -->
+    <div class="image">
+        <img src="Images/mint.jpg">
+        <h4><b>Mint Chocolate</b></h4>
+        <p class="price">₹95</p>
+        <button class="btn" onclick="addToCart('Mint Chocolate', 95)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Mint Chocolate', 95)">Order Now</button>
+    </div>
+
+</div>
+
+<!-- Cart Section -->
+<div id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+</div>
+
+<script>
+    let cart = [];
+    let isSignedIn = false; // set true after login
+
+    function addToCart(name, price) {
+        if(!isSignedIn) {
+            alert("Please sign in to add items to cart.");
+            window.location.href = "signin.html";
+            return;
+        }
+
+        const exists = cart.find(i => i.name === name);
+        if(exists){
+            alert(name + " is already in your cart!");
+            return;
+        }
+
+        cart.push({name, price});
+        renderCart();
+    }
+
+    function orderNow(name, price){
+        if(!isSignedIn){
+            alert("Please sign in to order.");
+            window.location.href = "signin.html";
+            return;
+        }
+        alert("Order placed for " + name + " (₹" + price + ")");
+    }
+
+    function removeFromCart(name){
+        cart = cart.filter(i => i.name !== name);
+        renderCart();
+    }
+
+    function renderCart(){
+        const list = document.getElementById('cart-items');
+        list.innerHTML = "";
+
+        if(cart.length === 0){
+            list.innerHTML = "<li>Your cart is empty.</li>";
+            return;
+        }
+
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.innerHTML = `${item.name} - ₹${item.price} 
+            <button onclick="removeFromCart('${item.name}')">Remove</button>`;
+            list.appendChild(li);
+        });
+    }
+</script>
 
 </body>
 </html>
