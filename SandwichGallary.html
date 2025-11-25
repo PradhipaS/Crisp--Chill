@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandwich Page</title>
+
+    <style>
+        body { font-family: Arial; margin: 0; text-align: center; }
+        header { background: #ff6347; padding: 15px; color: white; font-size: 24px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+
+        .card {
+            width: 230px; margin: 10px; border: 1px solid #ccc;
+            border-radius: 8px; padding: 10px; text-align: center;
+        }
+        .card img { width: 100%; border-radius: 8px; height: 150px; object-fit: cover; }
+
+        button {
+            background: tomato; border: none; color: white;
+            padding: 8px 12px; margin: 5px; cursor: pointer; border-radius: 4px;
+        }
+
+        #cart {
+            position: fixed; top: 80px; right: 20px;
+            width: 250px; background: #f3f3f3; padding: 10px;
+            border-radius: 10px; border: 1px solid #ccc;
+        }
+        .cart-item { display: flex; justify-content: space-between; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<header>Sandwich Items</header>
+
+<div class="container" id="product-list"></div>
+
+<div id="cart">
+    <h3>Cart</h3>
+    <div id="cart-items"></div>
+</div>
+
+<script>
+const products = [
+    { name: "Veg Sandwich", image: "https://i.ytimg.com/vi/63eFUsVTN1M/maxresdefault.jpg" },
+    { name: "Grilled Sandwich", image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/05/grilled-vegetable-sandwich.jpg" },
+    { name: "Club Sandwich", image: "https://www.seriouseats.com/thmb/yjxSmF-LYcJkgxj5Yhtff1GJbWg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20220531-club-sandwich-vicky-wasik-30-b84f3bb18cfd41ddb35f1d46abafc0fd.jpg" },
+    { name: "Paneer Sandwich", image: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/05/paneer-sandwich-recipe.jpg" },
+    { name: "Chicken Sandwich", image: "https://www.recipetineats.com/wp-content/uploads/2019/06/Chicken-Sandwich_9.jpg" },
+    { name: "BLT Sandwich", image: "https://hips.hearstapps.com/hmg-prod/images/delish-190613-blt-horizontal-275-1561737748.jpg" }
+];
+
+let cart = [];
+
+function renderProducts() {
+    const container = document.getElementById("product-list");
+    products.forEach((p, i) => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${p.image}">
+                <h4>${p.name}</h4>
+                <button onclick="addToCart(${i})">Add to Cart</button>
+                <button onclick="orderNow('${p.name}')">Order Now</button>
+            </div>`;
+    });
+}
+
+function addToCart(i) {
+    cart.push(products[i]);
+    renderCart();
+}
+
+function orderNow(item) { alert("Order placed for: " + item); }
+
+function removeFromCart(i) {
+    cart.splice(i, 1);
+    renderCart();
+}
+
+function renderCart() {
+    const c = document.getElementById("cart-items");
+    c.innerHTML = "";
+    cart.forEach((item, i) => {
+        c.innerHTML += `<div class="cart-item">${item.name}
+            <button onclick="removeFromCart(${i})">X</button></div>`;
+    });
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
