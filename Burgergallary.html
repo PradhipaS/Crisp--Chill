@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Burger E-Commerce</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            width: 250px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 10px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .card button {
+            margin: 5px;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .order-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .cart {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 10px;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .cart h2 {
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            align-items: center;
+        }
+
+        .cart-item button {
+            background-color: #dc3545;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Burger E-Commerce</h1>
+
+<div class="container" id="productContainer">
+    <!-- Cards will be injected here -->
+</div>
+
+<div class="cart" id="cart">
+    <h2>Cart</h2>
+    <div id="cartItems"></div>
+</div>
+
+<script>
+    const products = [
+        {name: "Veg Burger", img: "https://via.placeholder.com/250x180?text=Veg+Burger"},
+        {name: "Chicken Burger", img: "https://via.placeholder.com/250x180?text=Chicken+Burger"},
+        {name: "Cheese Burger", img: "https://via.placeholder.com/250x180?text=Cheese+Burger"},
+        {name: "Double Patty Burger", img: "https://via.placeholder.com/250x180?text=Double+Patty+Burger"},
+        {name: "Mushroom Burger", img: "https://via.placeholder.com/250x180?text=Mushroom+Burger"},
+        {name: "Spicy Burger", img: "https://via.placeholder.com/250x180?text=Spicy+Burger"}
+    ];
+
+    const cart = [];
+
+    const productContainer = document.getElementById('productContainer');
+    const cartItems = document.getElementById('cartItems');
+
+    function displayProducts() {
+        products.forEach((product, index) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <img src="${product.img}" alt="${product.name}">
+                <h3>${product.name}</h3>
+                <button class="add-btn" onclick="addToCart(${index})">Add to Cart</button>
+                <button class="order-btn" onclick="orderNow(${index})">Order Now</button>
+            `;
+            productContainer.appendChild(card);
+        });
+    }
+
+    function addToCart(index) {
+        cart.push(products[index]);
+        updateCart();
+    }
+
+    function orderNow(index) {
+        alert(`You have ordered: ${products[index].name}`);
+    }
+
+    function removeFromCart(index) {
+        cart.splice(index, 1);
+        updateCart();
+    }
+
+    function updateCart() {
+        cartItems.innerHTML = '';
+        cart.forEach((item, index) => {
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+                <span>${item.name}</span>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            `;
+            cartItems.appendChild(div);
+        });
+    }
+
+    displayProducts();
+</script>
+
+</body>
+</html>

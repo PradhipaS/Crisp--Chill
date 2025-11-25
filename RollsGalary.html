@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rolls Page</title>
+
+    <style>
+        body { font-family: Arial; margin: 0; text-align: center; }
+        header { background: #0077cc; padding: 15px; color: white; font-size: 24px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
+        .card { width: 230px; margin: 10px; border: 1px solid #ccc; border-radius: 8px; padding: 10px; }
+        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
+        button { background: #0077cc; border: none; color: white; padding: 8px 12px; margin: 5px; cursor: pointer; border-radius: 4px; }
+        #cart { position: fixed; top: 80px; right: 20px; width: 250px; background: #f3f3f3; padding: 10px; border-radius: 10px; }
+        .cart-item { display: flex; justify-content: space-between; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<header>Rolls Menu</header>
+
+<div class="container" id="product-list"></div>
+
+<div id="cart">
+    <h3>Cart</h3>
+    <div id="cart-items"></div>
+</div>
+
+<script>
+const products = [
+    { name: "Veg Roll", image: "https://i.ytimg.com/vi/l5N7DbStDMs/maxresdefault.jpg" },
+    { name: "Chicken Roll", image: "https://www.whiskaffair.com/wp-content/uploads/2020/06/Chicken-Kathi-Roll-2-3.jpg" },
+    { name: "Egg Roll", image: "https://www.kannammacooks.com/wp-content/uploads/egg-kathi-roll-recipe-1.jpg" },
+    { name: "Kathi Roll", image: "https://i.ytimg.com/vi/Hc7ZW9Kq4ME/maxresdefault.jpg" },
+    { name: "Cheese Roll", image: "https://i.ytimg.com/vi/1PmXB2c-e0c/maxresdefault.jpg" }
+];
+
+let cart = [];
+
+function renderProducts() {
+    const container = document.getElementById("product-list");
+    products.forEach((p, i) => {
+        container.innerHTML += `
+            <div class="card">
+                <img src="${p.image}">
+                <h4>${p.name}</h4>
+                <button onclick="addToCart(${i})">Add to Cart</button>
+                <button onclick="orderNow('${p.name}')">Order Now</button>
+            </div>`;
+    });
+}
+
+function addToCart(i) { cart.push(products[i]); renderCart(); }
+function orderNow(item) { alert("Order for " + item); }
+function removeFromCart(i) { cart.splice(i, 1); renderCart(); }
+
+function renderCart() {
+    const c = document.getElementById("cart-items");
+    c.innerHTML = "";
+    cart.forEach((item, i) => {
+        c.innerHTML += `<div class="cart-item">${item.name}
+            <button onclick="removeFromCart(${i})">X</button></div>`;
+    });
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>

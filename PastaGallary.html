@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasta Shop</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        background: #ff6f61;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        gap: 20px;
+    }
+    .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        width: 250px;
+        text-align: center;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .card img {
+        width: 100%;
+        height: 150px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+    .card button {
+        background: #ff6f61;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    .card button:hover {
+        background: #ff3b2e;
+    }
+    .cart {
+        position: fixed;
+        right: 20px;
+        top: 100px;
+        background: white;
+        width: 300px;
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .cart h3 {
+        margin-top: 0;
+    }
+    .cart-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+    }
+    .cart-item button {
+        background: #ff3b2e;
+        padding: 5px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Pasta E-Commerce Shop</h1>
+</header>
+
+<div class="container" id="product-container">
+    <!-- Pasta cards will go here -->
+</div>
+
+<div class="cart" id="cart">
+    <h3>Shopping Cart</h3>
+    <div id="cart-items"></div>
+</div>
+
+<script>
+const products = [
+    {name: "Alfredo Pasta", image: "https://via.placeholder.com/250x150?text=Alfredo+Pasta"},
+    {name: "White Sauce Pasta", image: "https://via.placeholder.com/250x150?text=White+Sauce+Pasta"},
+    {name: "Red Sauce/Penne Arrabiata", image: "https://via.placeholder.com/250x150?text=Red+Sauce+Penne+Arrabiata"},
+    {name: "Macaroni Cheese", image: "https://via.placeholder.com/250x150?text=Macaroni+Cheese"},
+    {name: "Veg Pasta", image: "https://via.placeholder.com/250x150?text=Veg+Pasta"},
+    {name: "Chicken Pasta", image: "https://via.placeholder.com/250x150?text=Chicken+Pasta"}
+];
+
+const container = document.getElementById('product-container');
+const cartItemsContainer = document.getElementById('cart-items');
+let cart = [];
+
+function renderProducts() {
+    container.innerHTML = '';
+    products.forEach((product, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h4>${product.name}</h4>
+            <button onclick="addToCart(${index})">Add to Cart</button>
+            <button onclick="orderNow(${index})">Order Now</button>
+        `;
+        container.appendChild(card);
+    });
+}
+
+function addToCart(index) {
+    cart.push(products[index]);
+    renderCart();
+}
+
+function orderNow(index) {
+    alert(`Ordered: ${products[index].name}`);
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    renderCart();
+}
+
+function renderCart() {
+    cartItemsContainer.innerHTML = '';
+    cart.forEach((item, index) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+            <span>${item.name}</span>
+            <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItemsContainer.appendChild(div);
+    });
+}
+
+renderProducts();
+</script>
+
+</body>
+</html>
