@@ -1,182 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milkshake E-Commerce</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Milkshake Gallery</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom right, #ffd6e9, #d4e6ff);
+            font-family: "Merriweather", serif;
             margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
+            color:black;
         }
 
-        header {
-            background-color: #ff6f61;
-            color: white;
+        h1 {
+            margin-top: 20px;
+            color: #003a70;
+            text-shadow: 1px 1px #ffffff;
+        }
+
+        .image-container {
+            display: grid;
+            padding: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            justify-items: center;
+        }
+
+        .image {
+            width: 260px;
+            background: linear-gradient(145deg, #ffe2f1, #d4e8ff);
+            height: 400px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            padding: 10px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.12);
             text-align: center;
-            padding: 20px 0;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .container {
+            transition: transform 0.2s, box-shadow 0.3s;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin: 20px;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 15px;
-            width: 250px;
-            text-align: center;
-            overflow: hidden;
-            transition: transform 0.2s;
+        .image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 30px rgba(0, 70, 160, 0.25);
         }
 
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card img {
-            width: 100%;
+        img {
             height: 180px;
-            object-fit: cover;
+            width: 250px;
+            border-radius: 10px;
         }
 
-        .card h3 {
-            margin: 10px 0;
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #003b65;
         }
 
-        .card button {
-            margin: 5px;
-            padding: 10px 15px;
+        .btn {
+            background-color: #1a040e;
+            color: white;
+            padding: 8px 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
+            transition: 0.3s;
+            margin: 4px 0;
         }
 
-        .add-btn {
-            background-color: #28a745;
-            color: white;
+        .btn:hover {
+            background-color: #e6006f;
         }
 
-        .order-btn {
-            background-color: #007bff;
-            color: white;
-        }
-
+        /* Cart Styles */
         #cart {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            padding: 20px;
-            width: 250px;
-            max-height: 400px;
-            overflow-y: auto;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 15px;
+            background: #fff4fa;
+            border-radius: 12px;
+            border: 2px solid #ffd1ec;
+            color: #003b65;
+            text-align: left;
         }
 
-        #cart h3 {
-            margin-top: 0;
+        #cart h2 {
             text-align: center;
         }
 
-        .cart-item {
+        #cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #cart li {
             display: flex;
             justify-content: space-between;
-            margin: 10px 0;
+            padding: 8px 0;
+            border-bottom: 1px solid #ffd1ec;
         }
 
-        .remove-btn {
-            background-color: #dc3545;
-            color: white;
+        #cart button {
+            background-color: #e6006f;
+            padding: 5px 10px;
             border: none;
             border-radius: 5px;
+            color: white;
             cursor: pointer;
-            padding: 3px 6px;
+        }
+
+        #cart button:hover {
+            background-color: #ff4f9d;
         }
     </style>
 </head>
+
 <body>
 
-<header>Milkshake Shop</header>
+<h1>Milkshake Gallery</h1>
 
-<div class="container" id="products">
-    <!-- Milkshake Cards -->
+<div class="image-container">
+
+    <!-- Chocolate -->
+    <div class="image">
+        <img src="Images/chocolate_milkshake.jpg">
+        <h4><b>Chocolate Milkshake</b></h4>
+        <p class="price">₹120</p>
+        <button class="btn" onclick="addToCart('Chocolate Milkshake', 120)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Chocolate Milkshake', 120)">Order Now</button>
+    </div>
+
+    <!-- Strawberry -->
+    <div class="image">
+        <img src="Images/strawberryMS.jpg">
+        <h4><b>Strawberry Milkshake</b></h4>
+        <p class="price">₹110</p>
+        <button class="btn" onclick="addToCart('Strawberry Milkshake', 110)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Strawberry Milkshake', 110)">Order Now</button>
+    </div>
+
+    <!-- Vanilla -->
+    <div class="image">
+        <img src="Images/vanilla_milkshake.jpg">
+        <h4><b>Vanilla Milkshake</b></h4>
+        <p class="price">₹100</p>
+        <button class="btn" onclick="addToCart('Vanilla Milkshake', 100)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Vanilla Milkshake', 100)">Order Now</button>
+    </div>
+
+    <!-- Banana -->
+    <div class="image">
+        <img src="Images/banana_milkshake.jpg">
+        <h4><b>Banana Milkshake</b></h4>
+        <p class="price">₹115</p>
+        <button class="btn" onclick="addToCart('Banana Milkshake', 115)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Banana Milkshake', 115)">Order Now</button>
+    </div>
+
+    <!-- Oreo -->
+    <div class="image">
+        <img src="Images/oreo_milkshake.jpg">
+        <h4><b>Oreo Milkshake</b></h4>
+        <p class="price">₹130</p>
+        <button class="btn" onclick="addToCart('Oreo Milkshake', 130)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Oreo Milkshake', 130)">Order Now</button>
+    </div>
+
+    <!-- Mango -->
+    <div class="image">
+        <img src="Images/mango_milkshake.jpg">
+        <h4><b>Mango Milkshake</b></h4>
+        <p class="price">₹140</p>
+        <button class="btn" onclick="addToCart('Mango Milkshake', 140)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Mango Milkshake', 140)">Order Now</button>
+    </div>
+
+    <!-- KitKat Milkshake -->
+    <div class="image">
+        <img src="Images/kitkat_milkshake.jpg">
+        <h4><b>KitKat Milkshake</b></h4>
+        <p class="price">₹150</p>
+        <button class="btn" onclick="addToCart('KitKat Milkshake', 150)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('KitKat Milkshake', 150)">Order Now</button>
+    </div>
+
+    <!-- Snickers Milkshake -->
+    <div class="image">
+        <img src="Images/snickers_milkshake.jpg">
+        <h4><b>Snickers Milkshake</b></h4>
+        <p class="price">₹160</p>
+        <button class="btn" onclick="addToCart('Snickers Milkshake', 160)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Snickers Milkshake', 160)">Order Now</button>
+    </div>
+
+    <!-- Ferrero Rocher Milkshake -->
+    <div class="image">
+        <img src="Images/ferrero_milkshake.jpg">
+        <h4><b>Ferrero Rocher Milkshake</b></h4>
+        <p class="price">₹180</p>
+        <button class="btn" onclick="addToCart('Ferrero Rocher Milkshake', 180)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Ferrero Rocher Milkshake', 180)">Order Now</button>
+    </div>
+
+    <!-- Nutella Milkshake -->
+    <div class="image">
+        <img src="Images/nutella_milkshake.jpg">
+        <h4><b>Nutella Milkshake</b></h4>
+        <p class="price">₹170</p>
+        <button class="btn" onclick="addToCart('Nutella Milkshake', 170)">Add to Cart</button>
+        <button class="btn" onclick="orderNow('Nutella Milkshake', 170)">Order Now</button>
+    </div>
+
 </div>
 
+<!-- Cart -->
 <div id="cart">
-    <h3>Cart</h3>
-    <div id="cart-items"></div>
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
 </div>
 
 <script>
-    const milkshakes = [
-        {name: "Chocolate", img: "https://source.unsplash.com/250x180/?chocolate,milkshake"},
-        {name: "Strawberry", img: "https://source.unsplash.com/250x180/?strawberry,milkshake"},
-        {name: "Vanilla", img: "https://source.unsplash.com/250x180/?vanilla,milkshake"},
-        {name: "Banana", img: "https://source.unsplash.com/250x180/?banana,milkshake"},
-        {name: "Oreo", img: "https://source.unsplash.com/250x180/?oreo,milkshake"},
-        {name: "Mango", img: "https://source.unsplash.com/250x180/?mango,milkshake"},
-        {name: "KitKat", img: "https://source.unsplash.com/250x180/?kitkat,milkshake"}
-    ];
-
-    const productsContainer = document.getElementById('products');
-    const cartItemsContainer = document.getElementById('cart-items');
     let cart = [];
+    let isSignedIn = true; // change to false if you want sign-in required
 
-    function renderProducts() {
-        milkshakes.forEach(shake => {
-            const card = document.createElement('div');
-            card.className = 'card';
-            card.innerHTML = `
-                <img src="${shake.img}" alt="${shake.name}">
-                <h3>${shake.name} Milkshake</h3>
-                <button class="add-btn" onclick="addToCart('${shake.name}')">Add to Cart</button>
-                <button class="order-btn" onclick="orderNow('${shake.name}')">Order Now</button>
-            `;
-            productsContainer.appendChild(card);
-        });
-    }
-
-    function addToCart(name) {
-        cart.push(name);
+    function addToCart(name, price) {
+        if(!isSignedIn) {
+            alert("Please sign in to add items to cart.");
+            window.location.href = "signin.html";
+            return;
+        }
+        const existing = cart.find(item => item.name === name);
+        if(existing) {
+            alert(name + " is already in cart!");
+            return;
+        }
+        cart.push({name, price});
         renderCart();
+        alert(name + " added to your cart!");
     }
 
-    function orderNow(name) {
-        alert(`Order placed for ${name} Milkshake!`);
+    function orderNow(name, price) {
+        if(!isSignedIn) {
+            alert("Please sign in to order.");
+            window.location.href = "signin.html";
+            return;
+        }
+        alert("Order placed for " + name + " (₹" + price + ")");
     }
 
-    function removeFromCart(index) {
-        cart.splice(index, 1);
+    function removeFromCart(name) {
+        cart = cart.filter(item => item.name !== name);
         renderCart();
     }
 
     function renderCart() {
-        cartItemsContainer.innerHTML = '';
-        cart.forEach((item, index) => {
-            const div = document.createElement('div');
-            div.className = 'cart-item';
-            div.innerHTML = `
-                <span>${item}</span>
-                <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
-            `;
-            cartItemsContainer.appendChild(div);
+        const cartItems = document.getElementById('cart-items');
+        cartItems.innerHTML = '';
+
+        if(cart.length === 0) {
+            cartItems.innerHTML = '<li>Your cart is empty.</li>';
+            return;
+        }
+
+        cart.forEach(item => {
+            const li = document.createElement('li');
+            li.innerHTML = `${item.name} - ₹${item.price} 
+                <button onclick="removeFromCart('${item.name}')">Remove</button>`;
+            cartItems.appendChild(li);
         });
     }
-
-    renderProducts();
 </script>
 
 </body>
