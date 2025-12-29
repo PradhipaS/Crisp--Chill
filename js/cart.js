@@ -63,7 +63,7 @@ function addToCart(itemName, price, image = '') {
 // Show login required popup
 function showLoginRequiredPopup() {
     // Simple alert that redirects to signup page
-    const userChoice = confirm("Please sign up to add items to cart. Click OK to go to signup page.");
+    const userChoice = confirm("Please login or signup to add items to cart. Click OK to go to signup page.");
     
     if (userChoice) {
         window.location.href = 'signup.html';
