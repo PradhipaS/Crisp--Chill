@@ -4,6 +4,8 @@
 <head>
     <title>Crisp & Chill</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Cart Management Script -->
+    <script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -65,6 +67,7 @@
             <a href="contact.html"><b>Contact</b></a>
             <a href="login.html"><b>Login</b></a>
             <a href="signup.html"><b>SignUp</b></a>
+            <a href="#" id="cart-link" style="position: relative;"><b>🛒 Cart</b> <span id="cart-count" style="display: none; background: #ff4f9d; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; position: absolute; top: -5px; right: -10px;">0</span></a>
 
        
     </nav>
@@ -182,8 +185,39 @@
             }
         });
 
+        // Update navigation based on login status
+        function updateNavigation() {
+            const isLoggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const userData = localStorage.getItem('userData');
+            const nav = document.querySelector('nav');
+            
+            if (isLoggedIn && userData) {
+                const user = JSON.parse(userData);
+                // Update navigation for logged in user
+                nav.innerHTML = `
+                    <a href="#about"><b>About Us</b></a>
+                    <a href="contact.html"><b>Contact</b></a>
+                    <span style="color: #003a70; font-weight: bold;">Welcome, ${user.firstName}! 👋</span>
+                    <a href="#" onclick="logout()" style="color: #ff4f9d;"><b>Logout</b></a>
+                    <a href="#" id="cart-link" style="position: relative;"><b>🛒 Cart</b> <span id="cart-count" style="display: none; background: #ff4f9d; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; position: absolute; top: -5px; right: -10px;">0</span></a>
+                `;
+            }
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userData');
+            localStorage.removeItem('cartItems');
+            alert('Logged out successfully! 👋');
+            location.reload(); // Refresh page to update navigation
+        }
+
         // Show popup when page loads
-        window.addEventListener('load', showSignupPopup);
+        window.addEventListener('load', function() {
+            showSignupPopup();
+            updateNavigation();
+        });
 
         // Add some animation to cards
         document.addEventListener('DOMContentLoaded', function() {
@@ -192,6 +226,8 @@
                 card.style.animationDelay = `${index * 0.1}s`;
                 card.classList.add('card-animate');
             });
+            
+            updateNavigation();
         });
     </script>
 

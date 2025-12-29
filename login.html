@@ -109,11 +109,20 @@
             const password = document.getElementById('password').value;
 
             if(username === "admin" && password === "1234") {
-                alert("Login Successful!");
-                // Redirect to homepage or gallery
+                // Set login status and user data
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userData', JSON.stringify({
+                    firstName: 'Admin',
+                    lastName: 'User',
+                    email: 'admin@crispandchill.com',
+                    username: username
+                }));
+                
+                alert("Login Successful! Welcome to Crisp & Chill! 🎉");
+                // Redirect to homepage
                 window.location.href = "index.html";
             } else {
-                alert("Invalid Username or Password!");
+                alert("Invalid Username or Password! ❌");
             }
         }
     </script>
