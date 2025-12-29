@@ -8,6 +8,51 @@
 
 <body>
 
+    <!-- SIGNUP POPUP -->
+    <div id="signupPopup" class="popup-overlay">
+        <div class="popup-content">
+            <div class="popup-close" onclick="closePopup()">&times;</div>
+            <div class="popup-header">
+                <img src="Images/burger.jpg" alt="Food" class="popup-food-img">
+                <h2>🍔 Welcome to Crisp & Chill! 🍕</h2>
+                <p>Join us for amazing food experiences!</p>
+            </div>
+            <div class="popup-body">
+                <div class="popup-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🎉</span>
+                        <span>Exclusive offers & discounts</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">🚀</span>
+                        <span>Fast delivery to your door</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">⭐</span>
+                        <span>Rate & review your favorites</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">💝</span>
+                        <span>Special birthday treats</span>
+                    </div>
+                </div>
+                <div class="popup-buttons">
+                    <a href="signup.html" class="popup-btn signup-btn">
+                        <span class="btn-icon">📝</span>
+                        Sign Up Now
+                    </a>
+                    <a href="login.html" class="popup-btn login-btn">
+                        <span class="btn-icon">🔑</span>
+                        Already a member? Login
+                    </a>
+                </div>
+                <div class="popup-footer">
+                    <p>🍽️ Over 100+ delicious items waiting for you!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- HEADER WITH BACKGROUND IMAGE -->
     <header class="header-section">
         <h1>Welcome to Crisp & Chill</h1>
@@ -108,6 +153,47 @@
         <address><b>Address:</b> 123 Refreshment Lane, Electronic street, Erode 638102.</address>
         </div>
     </footer>
+
+    <!-- POPUP JAVASCRIPT -->
+    <script>
+        // Check if user has seen the popup before
+        function showSignupPopup() {
+            const hasSeenPopup = localStorage.getItem('hasSeenSignupPopup');
+            const isLoggedIn = localStorage.getItem('userLoggedIn');
+            
+            // Show popup if user hasn't seen it and isn't logged in
+            if (!hasSeenPopup && !isLoggedIn) {
+                setTimeout(() => {
+                    document.getElementById('signupPopup').style.display = 'flex';
+                }, 1000); // Show after 1 second
+            }
+        }
+
+        // Close popup function
+        function closePopup() {
+            document.getElementById('signupPopup').style.display = 'none';
+            localStorage.setItem('hasSeenPopup', 'true');
+        }
+
+        // Close popup when clicking outside
+        document.getElementById('signupPopup').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePopup();
+            }
+        });
+
+        // Show popup when page loads
+        window.addEventListener('load', showSignupPopup);
+
+        // Add some animation to cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('card-animate');
+            });
+        });
+    </script>
 
 </body>
 
