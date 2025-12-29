@@ -62,43 +62,12 @@ function addToCart(itemName, price, image = '') {
 
 // Show login required popup
 function showLoginRequiredPopup() {
-    // Create popup overlay
-    const popupOverlay = document.createElement('div');
-    popupOverlay.className = 'login-required-popup';
-    popupOverlay.innerHTML = `
-        <div class="login-popup-content">
-            <div class="login-popup-header">
-                <h2>🔐 Login Required</h2>
-                <button class="close-popup" onclick="closeLoginPopup()">&times;</button>
-            </div>
-            <div class="login-popup-body">
-                <div class="popup-icon">🛒</div>
-                <p>You need to be logged in to add items to your cart!</p>
-                <div class="popup-benefits">
-                    <div class="benefit">✅ Save your favorite items</div>
-                    <div class="benefit">✅ Quick checkout process</div>
-                    <div class="benefit">✅ Order history tracking</div>
-                </div>
-            </div>
-            <div class="login-popup-buttons">
-                <button class="popup-btn login-btn" onclick="goToLogin()">
-                    🔑 Login Now
-                </button>
-                <button class="popup-btn signup-btn" onclick="goToSignup()">
-                    📝 Sign Up
-                </button>
-            </div>
-        </div>
-    `;
+    // Simple alert that redirects to signup page
+    const userChoice = confirm("Please sign up to add items to cart. Click OK to go to signup page.");
     
-    document.body.appendChild(popupOverlay);
-    
-    // Add event listener to close popup when clicking outside
-    popupOverlay.addEventListener('click', function(e) {
-        if (e.target === popupOverlay) {
-            closeLoginPopup();
-        }
-    });
+    if (userChoice) {
+        window.location.href = 'signup.html';
+    }
 }
 
 // Close login popup
