@@ -25,13 +25,18 @@ function saveCartItems(items) {
 
 // Add item to cart function
 function addToCart(itemName, price, image = '') {
+    console.log("addToCart called with:", itemName, price); // Debug log
+    
     // Check if user is logged in
     if (!isUserLoggedIn()) {
+        console.log("User not logged in, showing popup"); // Debug log
         // Show login required popup
         showLoginRequiredPopup();
         return;
     }
 
+    console.log("User is logged in, adding to cart"); // Debug log
+    
     // Get current cart items
     let cartItems = getCartItems();
     
@@ -65,8 +70,20 @@ function showLoginRequiredPopup() {
     // Simple alert that redirects to signup page
     const userChoice = confirm("Please login or signup to add items to cart. Click OK to go to signup page.");
     
-    if (userChoice) {
-        window.location.href = 'signup.html';
+    console.log("User choice:", userChoice); // Debug log
+    
+    if (userChoice === true) {
+        console.log("Redirecting to signup page..."); // Debug log
+        // Try different redirect methods
+        try {
+            window.location.href = 'signup.html';
+        } catch (error) {
+            console.error("Redirect error:", error);
+            // Fallback redirect method
+            window.location.replace('signup.html');
+        }
+    } else {
+        console.log("User cancelled redirect"); // Debug log
     }
 }
 
