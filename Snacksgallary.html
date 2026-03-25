@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks - Crisp & Chill</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="js/cart.js"></script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{text-align:center;background:linear-gradient(to bottom right,#b94981,#87b1d3);font-family:"Merriweather",serif;color:black;}
+        nav{background:rgba(250,214,214,0.7);padding:14px;font-size:15px;font-weight:bold;}
+        nav a{margin:0 12px;text-decoration:none;color:rgb(36,21,88);}
+        nav a:hover{color:#d179ae;}
+        h1{margin:24px 0 10px;color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.4);}
+        .image-container{display:grid;padding:30px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;justify-items:center;}
+        .image{width:260px;background:linear-gradient(145deg,#ffe2f1,#d4e8ff);height:400px;border-radius:15px;border:2px solid rgba(255,255,255,0.6);padding:10px;box-shadow:0 8px 20px rgba(0,0,0,0.12);display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.2s,box-shadow 0.3s;}
+        .image:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,70,160,0.25);}
+        .image img{height:180px;width:100%;border-radius:10px;object-fit:cover;}
+        .price{font-size:17px;font-weight:bold;color:#003b65;}
+        .btn{background:linear-gradient(135deg,#b94981,#87b1d3);color:white;padding:8px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;transition:0.3s;margin:3px 0;font-size:13px;}
+        .btn:hover{opacity:0.85;}
+    </style>
+</head>
+<body>
+<nav>
+    <a href="index.html"> Home</a>
+    <a href="cart.html">Cart <span id="cart-count" style="display:none;background:#ff4f9d;color:white;border-radius:50%;padding:1px 6px;font-size:11px;">0</span></a>
+    <a href="orders.html">My Orders</a>
+</nav>
+<h1>Snacks Gallery</h1>
+<div class="image-container">
+    <div class="image"><img src="Images/pakora.jpg" alt="Pakora"><h4>Pakora / Bhaji</h4><p class="price">₹50</p><button class="btn" onclick="addToCart('Pakora / Bhaji',50,'Images/pakora.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Pakora / Bhaji',50)">Order Now</button></div>
+    <div class="image"><img src="Images/nachos.jpg" alt="Nachos"><h4>Nachos</h4><p class="price">₹120</p><button class="btn" onclick="addToCart('Nachos',120,'Images/nachos.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Nachos',120)">Order Now</button></div>
+    <div class="image"><img src="Images/popcorn.jpg" alt="Popcorn"><h4>Popcorn</h4><p class="price">₹70</p><button class="btn" onclick="addToCart('Popcorn',70,'Images/popcorn.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Popcorn',70)">Order Now</button></div>
+    <div class="image"><img src="Images/vada.jpg" alt="Vada"><h4>Vada</h4><p class="price">₹40</p><button class="btn" onclick="addToCart('Vada',40,'Images/vada.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Vada',40)">Order Now</button></div>
+    <div class="image"><img src="Images/bonda.jpg" alt="Bonda"><h4>Bonda</h4><p class="price">₹35</p><button class="btn" onclick="addToCart('Bonda',35,'Images/bonda.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Bonda',35)">Order Now</button></div>
+</div>
+</body>
+</html>
+

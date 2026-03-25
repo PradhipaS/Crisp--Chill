@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Crisp & Chill</title>
+    <script src="js/api.js"></script>
+    <script src="js/cart.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: linear-gradient(to bottom right, #b94981, #87b1d3); min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 30px 16px; }
+        .back-link { align-self: flex-start; margin-bottom: 16px; }
+        .back-link a { background: rgba(255,255,255,0.9); color: #003a70; padding: 8px 16px; border-radius: 20px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        .container { background: white; border-radius: 18px; padding: 32px; width: 100%; max-width: 520px; box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
+        h2 { color: #003a70; text-align: center; margin-bottom: 22px; font-size: 24px; }
+        .summary { background: #fff4fa; border: 1.5px solid #ffd1ec; border-radius: 12px; padding: 16px; margin-bottom: 22px; }
+        .summary h4 { color: #003a70; margin-bottom: 10px; }
+        .summary-item { display: flex; justify-content: space-between; padding: 5px 0; font-size: 14px; color: #444; border-bottom: 1px solid #ffeaf5; }
+        .summary-total { display: flex; justify-content: space-between; margin-top: 10px; font-weight: bold; color: #003a70; font-size: 16px; }
+        label { display: block; font-size: 14px; color: #444; margin-bottom: 5px; font-weight: bold; }
+        input, select { width: 100%; padding: 11px 14px; margin-bottom: 16px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 14px; }
+        input:focus, select:focus { outline: none; border-color: #b94981; }
+        .card-fields { display: none; }
+        button { width: 100%; padding: 14px; background: linear-gradient(135deg, #b94981, #87b1d3); color: white; font-size: 16px; font-weight: bold; border: none; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+        button:hover { opacity: 0.9; }
+        button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .msg { margin-top: 14px; padding: 12px; border-radius: 8px; font-size: 14px; display: none; text-align: center; }
+        .msg.success { background: #e0ffe0; color: #27ae60; display: block; }
+        .msg.error   { background: #ffe0e0; color: #c0392b; display: block; }
+    </style>
+</head>
+<body>
+    <div class="back-link"><a href="cart.html">← Back to Cart</a></div>
+
+    <div class="container">
+        <h2>Checkout</h2>
+
+        <div class="summary">
+            <h4>Order Summary</h4>
+            <div id="summaryItems"></div>
+            <div class="summary-total">
+                <span>Total (incl. delivery)</span>
+                <span>₹<span id="totalDisplay">0</span></span>
+            </div>
+        </div>
+
+        <form id="paymentForm" onsubmit="handlePayment(event)">
+            <label>Full Name</label>
+            <input type="text" id="fullName" placeholder="Enter your full name" required>
+
+            <label>Email</label>
+            <input type="email" id="emailField" placeholder="Enter your email" required>
+
+            <label>Delivery Address</label>
+            <input type="text" id="address" placeholder="Enter delivery address" required>
+
+            <label>Payment Method</label>
+            <select id="payMethod" onchange="toggleCardFields()" required>
+                <option value="">Select payment method</option>
+                <option value="card">Credit / Debit Card</option>
+                <option value="upi">UPI</option>
+                <option value="cod">Cash on Delivery</option>
+            </select>
+
+            <div class="card-fields" id="cardFields">
+                <label>Card Number</label>
+                <input type="text" id="cardNum" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19">
+                <label>Expiry &amp; CVV</label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+                    <input type="text" placeholder="MM/YY" maxlength="5">
+                    <input type="text" placeholder="CVV" maxlength="3">
+                </div>
+            </div>
+
+            <div id="upiField" style="display:none;">
+                <label>UPI ID</label>
+                <input type="text" id="upiId" placeholder="yourname@upi">
+            </div>
+
+            <button type="submit" id="payBtn">Place Order</button>
+        </form>
+
+        <div id="payMsg" class="msg"></div>
+    </div>
+
+    <script>
+        // Pre-fill user data
+        window.addEventListener('load', function() {
+            const user = getUser ? getUser() : JSON.parse(localStorage.getItem('userData') || '{}');
+            if (user) {
+                if (user.firstName) document.getElementById('fullName').value = user.firstName + ' ' + (user.lastName || '');
+                if (user.email) document.getElementById('emailField').value = user.email;
+            }
+
+            // Render cart summary
+            const items = getCartItems();
+            const summaryEl = document.getElementById('summaryItems');
+            if (items.length === 0) {
+                summaryEl.innerHTML = '<p style="color:#888;font-size:13px;">No items in cart.</p>';
+            } else {
+                summaryEl.innerHTML = items.map(i =>
+                    `<div class="summary-item"><span>${i.name} x${i.quantity}</span><span>₹${i.price * i.quantity}</span></div>`
+                ).join('');
+            }
+            const total = parseInt(localStorage.getItem('checkoutTotal') || getCartTotal() + 40);
+            document.getElementById('totalDisplay').textContent = total;
+        });
+
+        function toggleCardFields() {
+            const method = document.getElementById('payMethod').value;
+            document.getElementById('cardFields').style.display = method === 'card' ? 'block' : 'none';
+            document.getElementById('upiField').style.display  = method === 'upi'  ? 'block' : 'none';
+        }
+
+        async function handlePayment(e) {
+            e.preventDefault();
+            const btn = document.getElementById('payBtn');
+            const msg = document.getElementById('payMsg');
+            const items = getCartItems();
+
+            if (items.length === 0) {
+                msg.className = 'msg error';
+                msg.textContent = 'Your cart is empty!';
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Processing...';
+
+            const user = JSON.parse(localStorage.getItem('userData') || '{}');
+            const total = parseInt(document.getElementById('totalDisplay').textContent);
+
+            // Save order to localStorage (works even without backend)
+            const orderId = 'ORD' + Date.now();
+            const order = {
+                id: orderId,
+                orderId: orderId,
+                customerName: document.getElementById('fullName').value,
+                customerEmail: document.getElementById('emailField').value,
+                address: document.getElementById('address').value,
+                paymentMethod: document.getElementById('payMethod').value,
+                date: new Date().toLocaleDateString(),
+                time: new Date().toLocaleTimeString(),
+                status: 'Pending',
+                items: items.map(i => ({ name: i.name, quantity: i.quantity, price: i.price, productName: i.name, unitPrice: i.price })),
+                total,
+                totalAmount: total
+            };
+            // Save to customer's orders
+            const existing = JSON.parse(localStorage.getItem('myOrders') || '[]');
+            existing.unshift(order);
+            localStorage.setItem('myOrders', JSON.stringify(existing));
+            // Save to shared allOrders (for admin dashboard)
+            const allOrders = JSON.parse(localStorage.getItem('allOrders') || '[]');
+            allOrders.unshift(order);
+            localStorage.setItem('allOrders', JSON.stringify(allOrders));
+
+            // Try to post to backend
+            try {
+                if (user.userId) {
+                    await apiPlaceOrder({
+                        userId: user.userId,
+                        totalAmount: total,
+                        deliveryAddress: document.getElementById('address').value,
+                        items: items.map(i => ({ productId: i.id, quantity: i.quantity, unitPrice: i.price }))
+                    });
+                }
+            } catch (err) { /* backend offline, order saved locally */ }
+
+            clearCart();
+            localStorage.removeItem('checkoutTotal');
+
+            msg.className = 'msg success';
+            msg.textContent = `Order placed successfully! Order ID: ${order.id}`;
+            document.getElementById('paymentForm').style.display = 'none';
+
+            setTimeout(() => { window.location.href = 'orders.html'; }, 2500);
+        }
+    </script>
+</body>
+</html>
+

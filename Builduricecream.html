@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Build Your Own Ice Cream</title>
+<link rel="stylesheet" href="style.css">
+<script src="js/cart.js"></script>
+<style>
+    body{
+        font-family: Arial;
+        background: #ffe9ef;
+        margin: 0;
+        padding: 20px;
+    }
+    h1{
+        text-align: center;
+        color: #b2164f;
+    }
+    .builder-box{
+        max-width: 650px;
+        background: white;
+        padding: 25px;
+        margin: auto;
+        border-radius: 12px;
+        box-shadow: 0 0 10px #b85070;
+    }
+    label{
+        font-weight: bold;
+    }
+    select, input{
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 14px;
+        border-radius: 6px;
+        border: 1px solid #aaa;
+    }
+    .summary{
+        background: #fee0e4;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        font-size: 18px;
+    }
+    .btn{
+        width: 100%;
+        padding: 12px;
+        background: #c73065;
+        border: none;
+        color: white;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn:hover{
+        background: #991947;
+    }
+    .nav-user { color: #003a70; font-weight: bold; }
+</style>
+</head>
+
+<body>
+
+<nav id="main-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="cart.html" style="position:relative;">
+        🛒 Cart
+        <span id="cart-count" style="display:none;background:#ff4f9d;color:white;border-radius:50%;padding:2px 6px;font-size:11px;position:absolute;top:-6px;right:-12px;">0</span>
+    </a>
+</nav>
+
+<h1>🍨 Build Your Own Ice-Cream</h1>
+
+<div class="builder-box">
+
+    <label>Choose Base Flavor</label>
+    <select id="base">
+        <option value="Strawberry|50">Strawberry - ₹50</option>
+        <option value="Chocolate|60">Chocolate - ₹60</option>
+        <option value="Vanilla|40">Vanilla - ₹40</option>
+        <option value="Mango|55">Mango - ₹55</option>
+        <option value="Blueberry|70">Blueberry - ₹70</option>
+    </select>
+
+    <label>Choose Container</label>
+    <select id="container">
+        <option value="Cup|0">Cup (Free)</option>
+        <option value="Cone|10">Cone - ₹10</option>
+        <option value="Waffle Cone|25">Waffle Cone - ₹25</option>
+    </select>
+
+    <label>Choose Mix-ins</label>
+    <select id="mixins">
+        <option value="None|0">None</option>
+        <option value="Choco Chips|15">Choco Chips - ₹15</option>
+        <option value="Brownie Bites|25">Brownie Bites - ₹25</option>
+        <option value="Nuts|20">Nuts - ₹20</option>
+        <option value="Gummy Bears|30">Gummy Bears - ₹30</option>
+    </select>
+
+    <label>Choose Topping</label>
+    <select id="toppings">
+        <option value="None|0">None</option>
+        <option value="Sprinkles|10">Sprinkles - ₹10</option>
+        <option value="Chocolate Syrup|15">Chocolate Syrup - ₹15</option>
+        <option value="Caramel Sauce|20">Caramel Sauce - ₹20</option>
+    </select>
+
+    <button class="btn" onclick="calculate()">Create Ice-Cream</button>
+    <button class="btn" onclick="orderNow()" style="margin-top:10px;">Order Now</button>
+
+    <div class="summary" id="output">
+        🍨 Your custom ice-cream will appear here.
+    </div>
+
+</div>
+
+<!-- ...existing code... -->
+
+<script>
+let selectedIcecream = null;
+
+function calculate(){
+    const base = document.getElementById("base").value.split("|");
+    const cont = document.getElementById("container").value.split("|");
+    const mix = document.getElementById("mixins").value.split("|");
+    const top = document.getElementById("toppings").value.split("|");
+
+    const total = Number(base[1]) + Number(cont[1]) + Number(mix[1]) + Number(top[1]);
+
+    selectedIcecream = {
+        name: `${base[0]} Icecream (${cont[0]}, ${mix[0]}, ${top[0]})`,
+        price: total
+    };
+
+    document.getElementById("output").innerHTML = `
+        <b>🍨 Your Custom Ice-Cream:</b><br><br>
+        Base: ${base[0]}<br>
+        Container: ${cont[0]}<br>
+        Mix-ins: ${mix[0]}<br>
+        Topping: ${top[0]}<br>
+        <br>
+        <b>Total Price: ₹${total}</b>
+    `;
+}
+
+function orderNow(){
+    if(!selectedIcecream){
+        alert("Please create your ice-cream first!");
+        return;
+    }
+
+    // Get existing cart from localStorage (or initialize empty array)
+    let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+
+    // Add the selected ice cream to the cart
+    cart.push(selectedIcecream);
+
+    // Save updated cart to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+
+    // Redirect to payment page
+    window.location.href = "payment.html";
+}
+function updateNav() {
+    const loggedIn = localStorage.getItem('userLoggedIn') === 'true';
+    const user = loggedIn ? JSON.parse(localStorage.getItem('userData') || '{}') : null;
+    if (loggedIn && user) {
+        const nav = document.getElementById('main-nav');
+        const cartLink = nav.querySelector('a[href="cart.html"]');
+        const welcome = document.createElement('span');
+        welcome.className = 'nav-user';
+        welcome.textContent = 'Hi, ' + (user.firstName || user.email);
+        const logout = document.createElement('a');
+        logout.href = '#';
+        logout.textContent = 'Logout';
+        logout.style.color = '#ff4f9d';
+        logout.onclick = function() {
+            localStorage.removeItem('userLoggedIn');
+            localStorage.removeItem('userData');
+            localStorage.removeItem('cartItems');
+            location.reload();
+        };
+        nav.insertBefore(logout, cartLink);
+        nav.insertBefore(welcome, logout);
+    }
+}
+window.addEventListener('load', function() {
+    updateNav();
+});
+</script>
+
+<!-- ...existing code... -->
+</body>
+</html>
+

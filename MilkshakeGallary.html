@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milkshake - Crisp & Chill</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="js/cart.js"></script>
+    <style>
+        *{box-sizing:border-box;margin:0;padding:0;}
+        body{text-align:center;background:linear-gradient(to bottom right,#b94981,#87b1d3);font-family:"Merriweather",serif;color:black;}
+        nav{background:rgba(250,214,214,0.7);padding:14px;font-size:15px;font-weight:bold;}
+        nav a{margin:0 12px;text-decoration:none;color:rgb(36,21,88);}
+        nav a:hover{color:#d179ae;}
+        #nav-user{background:rgba(250,214,214,0.7);padding:5px;font-size:14px;text-align:center;}
+        h1{margin:24px 0 10px;color:white;text-shadow:1px 1px 4px rgba(0,0,0,0.4);}
+        .image-container{display:grid;padding:30px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;justify-items:center;}
+        .image{width:260px;background:linear-gradient(145deg,#ffe2f1,#d4e8ff);height:400px;border-radius:15px;border:2px solid rgba(255,255,255,0.6);padding:10px;box-shadow:0 8px 20px rgba(0,0,0,0.12);display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.2s,box-shadow 0.3s;}
+        .image:hover{transform:translateY(-8px);box-shadow:0 15px 30px rgba(0,70,160,0.25);}
+        .image img{height:180px;width:100%;border-radius:10px;object-fit:cover;}
+        .price{font-size:17px;font-weight:bold;color:#003b65;}
+        .btn{background:linear-gradient(135deg,#b94981,#87b1d3);color:white;padding:8px 14px;border:none;border-radius:8px;cursor:pointer;font-weight:bold;transition:0.3s;margin:3px 0;font-size:13px;}
+        .btn:hover{opacity:0.85;}
+    </style>
+</head>
+<body>
+<nav id="main-nav">
+    <a href="index.html">🏠 Home</a>
+    <a href="cart.html">🛒 Cart <span id="cart-count" style="display:none;background:#ff4f9d;color:white;border-radius:50%;padding:1px 6px;font-size:11px;">0</span></a>
+    <a href="orders.html">My Orders</a>
+</nav>
+<div id="nav-user" style="display:none;">Welcome, <span id="user-name"></span> | <a href="#" onclick="logout()">Logout</a></div>
+<h1>🥤 Milkshake Gallery</h1>
+<div class="image-container">
+    <div class="image"><img src="Images/chocolate_milkshake.jpg" alt="Chocolate Milkshake"><h4>Chocolate Milkshake</h4><p class="price">₹120</p><button class="btn" onclick="addToCart('Chocolate Milkshake',120,'Images/chocolate_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Chocolate Milkshake',120)">Order Now</button></div>
+    <div class="image"><img src="Images/strawberryMS.jpg" alt="Strawberry Milkshake"><h4>Strawberry Milkshake</h4><p class="price">₹110</p><button class="btn" onclick="addToCart('Strawberry Milkshake',110,'Images/strawberryMS.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Strawberry Milkshake',110)">Order Now</button></div>
+    <div class="image"><img src="Images/vanilla_milkshake.jpg" alt="Vanilla Milkshake"><h4>Vanilla Milkshake</h4><p class="price">₹100</p><button class="btn" onclick="addToCart('Vanilla Milkshake',100,'Images/vanilla_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Vanilla Milkshake',100)">Order Now</button></div>
+    <div class="image"><img src="Images/banana_milkshake.jpg" alt="Banana Milkshake"><h4>Banana Milkshake</h4><p class="price">₹115</p><button class="btn" onclick="addToCart('Banana Milkshake',115,'Images/banana_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Banana Milkshake',115)">Order Now</button></div>
+    <div class="image"><img src="Images/oreo_milkshake.jpg" alt="Oreo Milkshake"><h4>Oreo Milkshake</h4><p class="price">₹130</p><button class="btn" onclick="addToCart('Oreo Milkshake',130,'Images/oreo_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Oreo Milkshake',130)">Order Now</button></div>
+    <div class="image"><img src="Images/mango_milkshake.jpg" alt="Mango Milkshake"><h4>Mango Milkshake</h4><p class="price">₹140</p><button class="btn" onclick="addToCart('Mango Milkshake',140,'Images/mango_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Mango Milkshake',140)">Order Now</button></div>
+    <div class="image"><img src="Images/kitkat_milkshake.jpg" alt="KitKat Milkshake"><h4>KitKat Milkshake</h4><p class="price">₹150</p><button class="btn" onclick="addToCart('KitKat Milkshake',150,'Images/kitkat_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('KitKat Milkshake',150)">Order Now</button></div>
+    <div class="image"><img src="Images/snickers_milkshake.jpg" alt="Snickers Milkshake"><h4>Snickers Milkshake</h4><p class="price">₹160</p><button class="btn" onclick="addToCart('Snickers Milkshake',160,'Images/snickers_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Snickers Milkshake',160)">Order Now</button></div>
+    <div class="image"><img src="Images/ferrero_milkshake.jpg" alt="Ferrero Milkshake"><h4>Ferrero Rocher Milkshake</h4><p class="price">₹180</p><button class="btn" onclick="addToCart('Ferrero Rocher Milkshake',180,'Images/ferrero_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Ferrero Rocher Milkshake',180)">Order Now</button></div>
+    <div class="image"><img src="Images/nutella_milkshake.jpg" alt="Nutella Milkshake"><h4>Nutella Milkshake</h4><p class="price">₹170</p><button class="btn" onclick="addToCart('Nutella Milkshake',170,'Images/nutella_milkshake.jpg')">Add to Cart</button><button class="btn" onclick="orderNow('Nutella Milkshake',170)">Order Now</button></div>
+</div>
+<script>
+updateNav();
+</script>
+</body>
+</html>
+

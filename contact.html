@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Crisp & Chill</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background: linear-gradient(to bottom right, #b94981, #87b1d3); min-height: 100vh; }
+        nav { background: rgba(250,214,214,0.7); padding: 15px; font-size: 16px; font-weight: bold; text-align: center; }
+        nav a { margin: 0 14px; text-decoration: none; color: rgb(36,21,88); }
+        nav a:hover { color: #d179ae; }
+        .page-title { text-align: center; color: white; padding: 36px 20px 10px; font-size: 30px; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        .content { max-width: 900px; margin: 24px auto 50px; padding: 0 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .card { background: rgba(255,255,255,0.95); border-radius: 16px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h2 { color: #003a70; margin-bottom: 20px; font-size: 20px; }
+        .info-item { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+        .info-item .icon { font-size: 28px; flex-shrink: 0; }
+        .info-item h4 { color: #003a70; margin-bottom: 4px; }
+        .info-item p { color: #555; font-size: 14px; line-height: 1.5; }
+        label { display: block; font-size: 14px; color: #444; margin-bottom: 5px; font-weight: bold; }
+        input, textarea { width: 100%; padding: 11px 14px; margin-bottom: 16px; border: 1.5px solid #ddd; border-radius: 8px; font-size: 14px; font-family: Arial, sans-serif; }
+        input:focus, textarea:focus { outline: none; border-color: #b94981; }
+        textarea { height: 110px; resize: vertical; }
+        button { width: 100%; padding: 13px; background: linear-gradient(135deg, #b94981, #87b1d3); color: white; font-size: 15px; font-weight: bold; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; }
+        button:hover { opacity: 0.9; }
+        .msg { margin-top: 12px; padding: 10px; border-radius: 8px; font-size: 14px; display: none; }
+        .msg.success { background: #e0ffe0; color: #27ae60; display: block; }
+        @media (max-width: 640px) { .content { grid-template-columns: 1fr; } }
+        .nav-user { color: #003a70; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <nav id="main-nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="index.html#about">About</a>
+        <a href="cart.html">🛒 Cart</a>
+    </nav>
+
+    <h1 class="page-title">Contact Us</h1>
+
+    <div class="content">
+        <div class="card">
+            <h2>Get in Touch</h2>
+            <div class="info-item">
+                <div>
+                    <h4>Address</h4>
+                    <p>123 Refreshment Lane, Electronic Street, Erode 638102, Tamil Nadu</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div>
+                    <h4>Phone</h4>
+                    <p>+91 98765 43210</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div>
+                    <h4>Email</h4>
+                    <p>hello@crispandchill.com</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <div>
+                    <h4>Hours</h4>
+                    <p>Mon–Sun: 9:00 AM – 11:00 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Send a Message</h2>
+            <form onsubmit="sendMessage(event)">
+                <label>Your Name</label>
+                <input type="text" id="cName" placeholder="Enter your name" required>
+                <label>Email</label>
+                <input type="email" id="cEmail" placeholder="Enter your email" required>
+                <label>Message</label>
+                <textarea id="cMsg" placeholder="How can we help you?" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <div id="contactMsg" class="msg"></div>
+        </div>
+    </div>
+
+    <script>
+        function updateNav() {
+            const loggedIn = localStorage.getItem('userLoggedIn') === 'true';
+            const user = loggedIn ? JSON.parse(localStorage.getItem('userData') || '{}') : null;
+            if (loggedIn && user) {
+                const nav = document.getElementById('main-nav');
+                const cartLink = nav.querySelector('a[href="cart.html"]');
+                const welcome = document.createElement('span');
+                welcome.className = 'nav-user';
+                welcome.textContent = 'Hi, ' + (user.firstName || user.email);
+                const logout = document.createElement('a');
+                logout.href = '#';
+                logout.textContent = 'Logout';
+                logout.style.color = '#ff4f9d';
+                logout.onclick = function() {
+                    localStorage.removeItem('userLoggedIn');
+                    localStorage.removeItem('userData');
+                    localStorage.removeItem('cartItems');
+                    location.reload();
+                };
+                nav.insertBefore(logout, cartLink);
+                nav.insertBefore(welcome, logout);
+            }
+        }
+        window.addEventListener('load', function() {
+            updateNav();
+        });
+
+        function sendMessage(e) {
+            e.preventDefault();
+            const msg = document.getElementById('contactMsg');
+            msg.className = 'msg success';
+            msg.textContent = "Thanks for reaching out! We'll get back to you within 24 hours.";
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
+
